@@ -32,6 +32,7 @@ alias vi='vim'
 alias tmux='tmux -2'
 # alias javac='javac -encoding UTF-8'
 # alias java='java -Dfile.encoding=UTF-8'
+alias vndl='virsh net-dhcp-leases'
 alias gosh='rlwrap gosh'
 alias ocaml='rlwrap ocaml'
 
