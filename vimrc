@@ -153,7 +153,7 @@ set confirm
 " ファイルのバックアップを作る
 set backup
 " 指定したディレクトリに保存したファイルの前のバージョンを保存
-set backupdir=~/.vim/vimbackup"
+set backupdir=~/.vim/backup"
 " スワップファイルを作成する
 set swapfile
 " 指定したディレクトリにスワップファイルを作成する

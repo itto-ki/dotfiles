@@ -112,9 +112,6 @@ set directory=~/.config/nvim/swap
 " カーソル行の背景色を変える
 set cursorline
 
-" 文字がない場所にもカーソル移動を可能にする
-" set virtualedit=all
-
 " カーソルを行頭、行末で止まらないようにする
 set whichwrap=b,s,h,l,,[,]
 " インデントの削除を可能に、行の先頭で前の行の改行を削除を可能に、Ctrl+Wで入力した単語以外も削除可能に
