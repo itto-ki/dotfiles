@@ -98,10 +98,6 @@ set smartindent
 "
 " 保存されていないファイルがある時は、終了前に保存確認
 set confirm
-" ファイルのバックアップを作る
-set backup
-" 指定したディレクトリに保存したファイルの前のバージョンを保存
-set backupdir=~/.config/nvim/backup"
 " スワップファイルを作成する
 set swapfile
 " 指定したディレクトリにスワップファイルを作成する
