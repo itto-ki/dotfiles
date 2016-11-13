@@ -188,8 +188,14 @@ nnoremap <Space>. :<C-u>source $MYVIMRC<Enter>
 inoremap jj <ESC>
 " 補完時にScratchウィンドウを表示しない
 set completeopt=menuone
-
-
+" Linuxの場合、ESCもしくはC-[でIMEをオフにする
+let OSTYPE = system('uname')
+if OSTYPE == "Linux\n"
+    function! ImInActivate()
+        call system('fcitx-remote -c')
+    endfunction
+    inoremap <silent> <C-[> <ESC>:call ImInActivate()<CR>
+endif
 
 " ##########################################################################################
 " ### その他の設定
