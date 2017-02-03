@@ -98,10 +98,6 @@ set smartindent
 "
 " 保存されていないファイルがある時は、終了前に保存確認
 set confirm
-" ファイルのバックアップを作る
-set backup
-" 指定したディレクトリに保存したファイルの前のバージョンを保存
-set backupdir=~/.config/nvim/backup"
 " スワップファイルを作成する
 set swapfile
 " 指定したディレクトリにスワップファイルを作成する
@@ -115,9 +111,6 @@ set directory=~/.config/nvim/swap
 "
 " カーソル行の背景色を変える
 set cursorline
-
-" 文字がない場所にもカーソル移動を可能にする
-" set virtualedit=all
 
 " カーソルを行頭、行末で止まらないようにする
 set whichwrap=b,s,h,l,,[,]
@@ -195,8 +188,14 @@ nnoremap <Space>. :<C-u>source $MYVIMRC<Enter>
 inoremap jj <ESC>
 " 補完時にScratchウィンドウを表示しない
 set completeopt=menuone
-
-
+" Linuxの場合、ESCもしくはC-[でIMEをオフにする
+let OSTYPE = system('uname')
+if OSTYPE == "Linux\n"
+    function! ImInActivate()
+        call system('fcitx-remote -c')
+    endfunction
+    inoremap <silent> <C-[> <ESC>:call ImInActivate()<CR>
+endif
 
 " ##########################################################################################
 " ### その他の設定
