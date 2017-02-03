@@ -27,3 +27,6 @@ repo = 'zchee/deoplete-jedi'
 
 [[plugins]]
 repo = 'scrooloose/syntastic'
+
+[[plugins]]
+repo = 'rust-lang/rust.vim'
