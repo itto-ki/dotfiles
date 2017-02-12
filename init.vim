@@ -98,8 +98,9 @@ set smartindent
 "
 " 保存されていないファイルがある時は、終了前に保存確認
 set confirm
-" スワップファイルを作成しない
-set noswapfile
+" スワップファイルを作成する
+set swapfile
+set directory=~/.config/nvim/swap
 
 
 
