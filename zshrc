@@ -24,6 +24,8 @@ esac
 case ${OSTYPE} in
     linux*)
         alias ls='ls --color=always'
+        alias grep='grep -n --color'
+        alias ta='tmux attach -t'
         ;;
 esac
 alias la='ls -a'
