@@ -353,3 +353,13 @@ map <C-c> :GtagsCursor<CR>
 " rustfmt
 let g:rustfmt_autosave = 1
 let g:rustfmt_comand = $HOME . '/.cargo/bin/rustfmt'
+
+" racer
+set hidden
+let g:racer_cmd = $HOME . '/.cargo/bin/racer'
+let g:racer_experimental_completer = 1
+
+au FileType rust nmap gd <Plug>(rust-def)
+au FileType rust nmap sp <Plug>(rust-def-split)
+au FileType rust nmap vs <Plug>(rust-def-vertical)
+au FileType rust nmap <leader>gd <Plug>(rust-doc)
