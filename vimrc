@@ -24,7 +24,7 @@ if has('vim_starting')
         \   "mac"       : "make -f make_mac.mak",
         \   "unix"      : "make -f make_unix.mak",
         \ }}
-    NeoBundle 'Shougo/neosnippet'
+
     NeoBundle 'Shougo/neosnippet-snippets'
     NeoBundle 'Shougo/neomru.vim'
     NeoBundleLazy 'ujihisa/unite-colorscheme'
@@ -35,6 +35,8 @@ if has('vim_starting')
     NeoBundle 'scrooloose/nerdcommenter'
     NeoBundle 'nathanaelkane/vim-indent-guides'
     NeoBundleLazy 'amdt/vim-niji'
+    NeoBundle 'rust-lang/rust.vim'
+    NeoBundle 'racer-rust/vim-racer'
 
     " カラースキーム
     NeoBundle 'tomasr/molokai'
@@ -384,3 +386,12 @@ let g:lightline = {
 
 map <C-g> :Gtags 
 map <C-c> :GtagsCursor<CR>
+
+
+" ##########################################################################################
+" ### rustの設定
+" ##########################################################################################
+"
+" rustfmt
+let g:rustfmt_autosave = 1
+let g:rustfmt_comand = $HOME . '/.cargo/bin/rustfmt'
