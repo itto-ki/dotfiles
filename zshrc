@@ -4,7 +4,7 @@
 
 case ${OSTYPE} in
     darwin*)
-        export PATH=/usr/local/bin:/usr/local/sbin:/usr/texbin:$HOME/.cargo/bin:$PATH
+        export PATH=/usr/local/bin:/usr/local/sbin:/usr/texbin:$PATH
         export EDITOR=/Applications/MacVim.app/Contents/MacOS/Vim
         export LANG=ja_JP.UTF-8
         # export JAVA_HOME=`/System/Library/Frameworks/JavaVM.framework/Versions/A/Commands/java_home`
@@ -15,6 +15,9 @@ case ${OSTYPE} in
         export LANG=en_US.UTF-8
         ;;
 esac
+
+# Add a path rust cargo
+export PATH=$HOME/.cargo/bin:$PATH
 
 
 ############################################################################################
