@@ -9,14 +9,17 @@ case ${OSTYPE} in
         export LANG=ja_JP.UTF-8
         # export JAVA_HOME=`/System/Library/Frameworks/JavaVM.framework/Versions/A/Commands/java_home`
         export CLASSPATH=.:$JAVA_HOME:~/Dropbox/Program/javaworks/HTMLcrawler/jericho-html-3.4/dist/jericho-html-3.4.jar
+        export LESSOPEN='| source-highlight %s'
         ;;
     linux*)
         export PATH=$PATH:$HOME/.cargo/bin  # Add a path rust cargo
         export EDITOR=vim
         export LANG=en_US.UTF-8
         export RUST_SRC_PATH=$HOME/.multirust/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src
+        export LESSOPEN='| /usr/share/source-highlight/src-hilite-lesspipe.sh %s'
         ;;
 esac
+export LESS='-R'
 
 ############################################################################################
 ### Alias
