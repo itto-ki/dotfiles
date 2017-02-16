@@ -4,12 +4,11 @@
 
 case ${OSTYPE} in
     darwin*)
-        export PATH=/usr/local/bin:/usr/local/sbin:/usr/texbin:$PATH
+        export PATH=/usr/local/bin:/usr/local/sbin:/usr/texbin:$HOME/.cargo/bin:$PATH
         export EDITOR=/Applications/MacVim.app/Contents/MacOS/Vim
         export LANG=ja_JP.UTF-8
-        # export JAVA_HOME=`/System/Library/Frameworks/JavaVM.framework/Versions/A/Commands/java_home`
-        export CLASSPATH=.:$JAVA_HOME:~/Dropbox/Program/javaworks/HTMLcrawler/jericho-html-3.4/dist/jericho-html-3.4.jar
         export LESSOPEN='| source-highlight %s'
+        export RUST_SRC_PATH=$HOME/.multirust/toolchains/stable-x86_64-apple-darwin/lib/rustlib/src/rust/src
         ;;
     linux*)
         export PATH=$PATH:$HOME/.cargo/bin  # Add a path rust cargo
@@ -28,7 +27,6 @@ export LESS='-R'
 case ${OSTYPE} in
     linux*)
         alias ls='ls --color=always'
-        alias grep='grep -n --color'
         alias ta='tmux attach -t'
         ;;
 esac
@@ -36,6 +34,7 @@ alias la='ls -a'
 alias ll='ls -l'
 alias vi='vim'
 alias tmux='tmux -2'
+alias grep='grep -n --color'
 # alias javac='javac -encoding UTF-8'
 # alias java='java -Dfile.encoding=UTF-8'
 alias vndl='virsh net-dhcp-leases'
