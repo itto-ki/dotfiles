@@ -7,8 +7,6 @@ case ${OSTYPE} in
         export PATH=/usr/local/bin:/usr/local/sbin:/usr/texbin:$PATH
         export EDITOR=/Applications/MacVim.app/Contents/MacOS/Vim
         export LANG=ja_JP.UTF-8
-        # export JAVA_HOME=`/System/Library/Frameworks/JavaVM.framework/Versions/A/Commands/java_home`
-        export CLASSPATH=.:$JAVA_HOME:~/Dropbox/Program/javaworks/HTMLcrawler/jericho-html-3.4/dist/jericho-html-3.4.jar
         ;;
     linux*)
         export PATH=$PATH:$HOME/.cargo/bin  # Add a path rust cargo
