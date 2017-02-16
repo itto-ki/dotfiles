@@ -7,6 +7,7 @@ case ${OSTYPE} in
         export PATH=/usr/local/bin:/usr/local/sbin:/usr/texbin:$HOME/.cargo/bin:$PATH
         export EDITOR=/Applications/MacVim.app/Contents/MacOS/Vim
         export LANG=ja_JP.UTF-8
+        export RUST_SRC_PATH=$HOME/.multirust/toolchains/stable-x86_64-apple-darwin/lib/rustlib/src/rust/src
         ;;
     linux*)
         export PATH=$PATH:$HOME/.cargo/bin  # Add a path rust cargo
