@@ -11,15 +11,12 @@ case ${OSTYPE} in
         export CLASSPATH=.:$JAVA_HOME:~/Dropbox/Program/javaworks/HTMLcrawler/jericho-html-3.4/dist/jericho-html-3.4.jar
         ;;
     linux*)
+        export PATH=$PATH:$HOME/.cargo/bin  # Add a path rust cargo
         export EDITOR=vim
         export LANG=en_US.UTF-8
         export RUST_SRC_PATH=$HOME/.multirust/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src
         ;;
 esac
-
-# Add a path rust cargo
-export PATH=$HOME/.cargo/bin:$PATH
-
 
 ############################################################################################
 ### Alias
