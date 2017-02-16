@@ -4,7 +4,7 @@
 
 case ${OSTYPE} in
     darwin*)
-        export PATH=/usr/local/bin:/usr/local/sbin:/usr/texbin:$PATH
+        export PATH=/usr/local/bin:/usr/local/sbin:/usr/texbin:$HOME:/.cargo/bin:$PATH
         export EDITOR=/Applications/MacVim.app/Contents/MacOS/Vim
         export LANG=ja_JP.UTF-8
         ;;
