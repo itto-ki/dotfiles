@@ -25,7 +25,6 @@ esac
 case ${OSTYPE} in
     linux*)
         alias ls='ls --color=always'
-        alias grep='grep -n --color'
         alias ta='tmux attach -t'
         ;;
 esac
@@ -33,6 +32,7 @@ alias la='ls -a'
 alias ll='ls -l'
 alias vi='vim'
 alias tmux='tmux -2'
+alias grep='grep -n --color'
 # alias javac='javac -encoding UTF-8'
 # alias java='java -Dfile.encoding=UTF-8'
 alias vndl='virsh net-dhcp-leases'
