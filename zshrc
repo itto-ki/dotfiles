@@ -11,7 +11,7 @@ case ${OSTYPE} in
         export RUST_SRC_PATH=$HOME/.multirust/toolchains/stable-x86_64-apple-darwin/lib/rustlib/src/rust/src
         ;;
     linux*)
-        export PATH=$PATH:$HOME/.cargo/bin  # Add a path rust cargo
+        export PATH=$HOME/.cargo/bin:$PATH  # Add a path rust cargo
         export EDITOR=vim
         export LANG=en_US.UTF-8
         export RUST_SRC_PATH=$HOME/.multirust/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src
@@ -140,7 +140,7 @@ SPROMPT="%{${fg[white]}%}%r is correct? [n,y,a,e]:%{${reset_color}%} "
 ### pyenv
 #############################################################################################
 export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:${PYENV_ROOT}/shims$PATH"
+export PATH="$PYENV_ROOT/bin:${PYENV_ROOT}/shims:$PATH"
 eval "$(pyenv init -)"
 
 
