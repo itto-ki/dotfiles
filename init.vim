@@ -224,11 +224,11 @@ let g:deoplete#enable_at_startup = 1
 " バッファ一覧
 nmap <silent> <C-u><C-b> :<C-u>Denite buffer<CR>
 " レジスタ一覧
-nmap <silent> <C-u><C-r> :<C-u>Deinte neoyank<CR>
+nmap <silent> <C-u><C-y> :<C-u>Denite neoyank<CR>
 " 最近使用したファイル一覧
 nmap <silent> <C-u><C-m> :<C-u>Denite file_mru<CR>
 " ファイル一覧
-nmap <silent> <C-u><C-f> :<C-u>Deinte file_rec<CR>
+nmap <silent> <C-u><C-f> :<C-u>Denite file_rec<CR>
 " grep
 nmap <silent> <C-u><C-g> : <C-u>Denite grep<CR>
 " colorschem
