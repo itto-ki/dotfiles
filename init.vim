@@ -206,7 +206,7 @@ nnoremap - <C-x>
 
 " virtualenv使用のため、システム標準pythonへのパスを追記
 let g:python_host_prog = '/usr/bin/python'
-let g:python3_host_prog = '/usr/local/bin/python3'
+let g:python3_host_prog = '~/.pyenv/versions/neovim/bin/python'
 
 
 " ++++++++++++++++++++++++++++++ 各種プラグインの設定 ++++++++++++++++++++++++++++++
