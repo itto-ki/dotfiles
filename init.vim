@@ -206,7 +206,7 @@ nnoremap - <C-x>
 
 " virtualenv使用のため、システム標準pythonへのパスを追記
 let g:python_host_prog = '/usr/bin/python'
-let g:python3_host_prog = '~/.pyenv/versions/neovim/bin/python'
+let g:python3_host_prog = '/usr/local/bin/python3'
 
 
 " ++++++++++++++++++++++++++++++ 各種プラグインの設定 ++++++++++++++++++++++++++++++
@@ -221,28 +221,18 @@ let g:deoplete#enable_at_startup = 1
 " ##########################################################################################
 " ### uniteの設定
 " ##########################################################################################
-" 起動時にインサートモードで開始
-let g:unite_enable_start_insert = 1
 " バッファ一覧
-nnoremap <silent> <C-u><C-b> :<C-u>Unite buffer<CR>
-" ファイル一覧
-nnoremap <silent> <C-u><C-f> :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
+nmap <silent> <C-u><C-b> :<C-u>Denite buffer<CR>
 " レジスタ一覧
-nnoremap <silent> <C-u><C-r> :<C-u>Unite -buffer-name=register register<CR>
+nmap <silent> <C-u><C-r> :<C-u>Deinte neoyank<CR>
 " 最近使用したファイル一覧
-nnoremap <silent> <C-u><C-m> :<C-u>Unite file_mru<CR>
-" 全部乗せ
-nnoremap <silent> <C-u><C-a> :<C-u>Unite -buffer-name=files buffer file_mru bookmark file<CR>
-" unite.vim上でのキーマッピング
-autocmd FileType unite call s:unite_my_settings()
-function! s:unite_my_settings()
-  " 単語単位からパス単位で削除するように変更
-  imap <buffer> <C-w> <Plug>(unite_delete_backward_path)
-  " ESCキーを2回押すと終了する
-  nmap <silent><buffer> <ESC><ESC> q
-  imap <silent><buffer> <ESC><ESC> <ESC>q
-endfunction
-
+nmap <silent> <C-u><C-m> :<C-u>Denite file_mru<CR>
+" ファイル一覧
+nmap <silent> <C-u><C-f> :<C-u>Deinte file_rec<CR>
+" grep
+nmap <silent> <C-u><C-g> : <C-u>Denite grep<CR>
+" colorschem
+nmap <silent> <C-u><C-c> : <C-u>Denite colorscheme<CR>
 
 
 " ##########################################################################################
