@@ -2,7 +2,7 @@
 
 nvim_dir=~/.config/nvim
 nvim_files=(init.vim dein.toml dein_lazy.toml)
-nvim_installer=nvim_installer.sh
+dein_installer=installer.sh
 config_files=(zshrc tmux.conf)
 
 # neovimの設定ファイルを作成
@@ -16,9 +16,9 @@ for file in ${nvim_files[@]}; do
 done
 # dein.vimのインストール
 if [ ! -e $nvim_dir/repos ]; then    # dein.vimがインストールされていない場合
-    curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > $nvim_installer
-    sh $nvim_installer $nvim_dir
-    rm $nvim_installer
+    curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > $dein_installer
+    sh $dein_installer $nvim_dir
+    rm $dein_installer
 fi
 
 # neovim以外の設定ファイルを作成
