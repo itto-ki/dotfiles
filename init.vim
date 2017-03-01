@@ -19,9 +19,6 @@ if dein#load_state(s:dein_dir)
     call dein#save_state()
 endif
 
-call dein#add('Shougo/deoplete.nvim')
-
-
 " 依存関係の問題でvimprocだけは先にチェックする
 if dein#check_install(['vimproc'])
     call dein#install(['vimproc'])
@@ -293,7 +290,7 @@ let g:deoplete#omni_patterns.python = '\h\w*\|[^. \t]\.\w*'
 let g:syntastic_python_checkers = ['pyflakes', 'pep8']
 
 
-"
+
 " ##########################################################################################
 " ### NERDcommenterの設定
 " ##########################################################################################
