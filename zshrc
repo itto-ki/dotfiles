@@ -156,3 +156,4 @@ eval "$(pyenv virtualenv-init -)"
 ### Golang
 #############################################################################################
 export GOPATH=$HOME/.go
+export PATH=$GOPATH/bin:$PATH
