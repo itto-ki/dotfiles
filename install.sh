@@ -31,7 +31,7 @@ fi
 
 # neovim以外の設定ファイルを作成
 for file in ${CONFIGFIELS[@]}; do
-    if [ ! -e ~/.$file ]; then        # ファイルがない場合
-        ln -s $file ~/.$file    # ファイルのシンボリックリンクを作成
+    if [ ! -e $HOME/.$file ]; then        # ファイルがない場合
+        ln -s $SCRIPT_DIR/$file $HOME/.$file    # ファイルのシンボリックリンクを作成
     fi
 done
