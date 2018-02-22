@@ -28,6 +28,7 @@ case ${OSTYPE} in
     linux*)
         alias ls='ls --color=always'
         alias ta='tmux attach -t'
+        alias pbcopy='xsel --clipboard --input'
         ;;
 esac
 alias la='ls -a'
