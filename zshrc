@@ -85,7 +85,7 @@ export CLICOLOR=true
 ### Complement
 #############################################################################################
 
-autoload -U compinit; compinit            # 補完機能を有効にする
+autoload -U compinit; compinit -u         # 補完機能を有効にする
 setopt auto_list                          # 補完候補を一覧で表示する
 setopt auto_menu                          # TABで補完候補を順に切り替える
 setopt auto_param_keys                    # 対応する括弧を自動補完する
