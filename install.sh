@@ -1,36 +1,37 @@
 #!/bin/bash
 
-nvim_dir=$HOME/.config/nvim
-nvim_files=(init.vim dein.toml dein_lazy.toml)
-dein_installer=installer.sh
-config_files=(zshrc tmux.conf)
-tpm_dir=$HOME/.tmux/plugins/tpm
+SCRIPT_DIR=$(cd $(dirname $0); pwd)
+NVIMDIR=$HOME/.config/nvim
+NVIMFILES=(init.vim dein.toml dein_lazy.toml)
+DEIN_INSTALLSCRIPT=installer.sh
+CONFIGFIELS=(zshrc tmux.conf)
+TPMDIR=$HOME/.tmux/plugins/tpm
 
 # neovimの設定ファイルを作成
-if [ -e $nvim_dir ]; then
-    mkdir -p $nvim_dir
+if [ -e $NVIMDIR ]; then
+    mkdir -p $NVIMDIR
 fi
-for file in ${nvim_files[@]}; do
-    if [ ! -e $nvim_dir/$file ]; then    # ファイルがない場合
-        ln -s $file $nvim_dir/$file      # ファイルのシンボリックリンクを作成
+for file in ${NVIMFILES[@]}; do
+    if [ ! -e $NVIMDIR/$file ]; then    # ファイルがない場合
+        ln -s $SCRIPT_DIR/$file $NVIMDIR/$file      # ファイルのシンボリックリンクを作成
     fi
 done
 
 # dein.vimのインストール
-if [ ! -e $nvim_dir/repos ]; then    # dein.vimがインストールされていない場合
-    curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > $dein_installer
-    sh $dein_installer $nvim_dir
-    rm $dein_installer
+if [ ! -e $NVIMDIR/repos ]; then    # dein.vimがインストールされていない場合
+    curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > $DEIN_INSTALLSCRIPT
+    sh $DEIN_INSTALLSCRIPT $NVIMDIR
+    rm $DEIN_INSTALLSCRIPT
 fi
 
 # tpmのインストール
-if [ ! -e $tpm_dir ]; then
-    git clone https://github.com/tmux-plugins/tpm $tpm_dir
+if [ ! -e $TPMDIR ]; then
+    git clone https://github.com/tmux-plugins/tpm $TPMDIR
 fi
 
 # neovim以外の設定ファイルを作成
-for file in ${config_files[@]}; do
-    if [ ! -e ~/.$file ]; then        # ファイルがない場合
-        ln -s $file ~/.$file    # ファイルのシンボリックリンクを作成
+for file in ${CONFIGFIELS[@]}; do
+    if [ ! -e $HOME/.$file ]; then        # ファイルがない場合
+        ln -s $SCRIPT_DIR/$file $HOME/.$file    # ファイルのシンボリックリンクを作成
     fi
 done
