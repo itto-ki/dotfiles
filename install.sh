@@ -8,7 +8,7 @@ CONFIGFIELS=(zshrc tmux.conf)
 TPMDIR=$HOME/.tmux/plugins/tpm
 
 # neovimの設定ファイルを作成
-if [ -e $NVIMDIR ]; then
+if [ ! -e $NVIMDIR ]; then
     mkdir -p $NVIMDIR
 fi
 for file in ${NVIMFILES[@]}; do
