@@ -20,8 +20,8 @@ if dein#load_state(s:dein_dir)
 endif
 
 " 依存関係の問題でvimprocだけは先にチェックする
-if dein#check_install(['vimproc'])
-    call dein#install(['vimproc'])
+if dein#check_install(['vimproc.vim'])
+    call dein#install(['vimproc.vim'])
 endif
 " その他のプラグインチェックする
 if dein#check_install()

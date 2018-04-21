@@ -8,6 +8,9 @@ repo = 'Shougo/deoplete.nvim'
 repo = 'Shougo/neosnippet-snippets'
 
 [[plugins]]
+repo = 'Shougo/vimproc.vim'
+
+[[plugins]]
 repo = 'tomasr/molokai'
 
 [[plugins]]
