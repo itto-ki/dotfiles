@@ -228,7 +228,7 @@ set completeopt=menuone
 let OSTYPE = system('uname')
 if OSTYPE == "Linux\n"
     function! ImInActivate()
-        call system('fcitx-remote -c')
+        call system('ibus engine "xkb:us::eng"')
     endfunction
     inoremap <silent> <C-[> <ESC>:call ImInActivate()<CR>
 endif
