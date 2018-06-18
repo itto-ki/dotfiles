@@ -11,7 +11,7 @@ case ${OSTYPE} in
         export RUST_SRC_PATH=$HOME/.multirust/toolchains/stable-x86_64-apple-darwin/lib/rustlib/src/rust/src
         ;;
     linux*)
-        export PATH=$HOME/.cargo/bin:$PATH  # Add a path rust cargo
+        export PATH=$HOME/.local/bin:$PATH  # Add a path to pipenv
         export EDITOR=vim
         export LANG=en_US.UTF-8
         export RUST_SRC_PATH=$HOME/.multirust/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src
@@ -149,3 +149,8 @@ export PATH=$GOPATH/bin:$PATH
 ### Anaconda
 #############################################################################################
 export PATH=/home/itto-ki/anaconda3/bin:$PATH
+
+#############################################################################################
+### Pipenv
+#############################################################################################
+eval "$(pipenv --completion)"
