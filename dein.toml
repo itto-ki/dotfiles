@@ -42,3 +42,6 @@ repo = 'leafgarland/typescript-vim'
 
 [[plugins]]
 repo = 'maxmellon/vim-jsx-pretty'
+
+[[plugins]]
+repo = 'cespare/vim-toml'
