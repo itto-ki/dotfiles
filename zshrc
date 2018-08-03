@@ -47,7 +47,7 @@ alias ocaml='rlwrap ocaml'
 ### Language
 ############################################################################################
 
-# 文字コードをUTF-8に設定
+# Set character code using `less` command
 export LESSCHARSET=UTF-8
 
 
@@ -55,31 +55,27 @@ export LESSCHARSET=UTF-8
 ### General Setting
 ############################################################################################
 
-# KCODEをUTF-8に設定
+# Set KCODE UTF-8
 export KCODE=u
 
-# キーバインドをemacsモードに設定
+# Set a keybaind emacs-mode
 bindkey -e
-# キーバインドをvimモードに設定
+# Set an keybaind vi-mode
 # bindkey -v
 
-# ビープ音を鳴らさない
+# Don't beep
 setopt no_beep
-# ディレクトリ名の入力のみで移動する
+# Auto `cd` command when type directory name
 setopt auto_cd
-# 移動したディレクトリを記録しておく
+# Save hisotry of `cd`
 setopt auto_pushd
-# コマンドのスペルを訂正する
+# Fix a miss of command spells
 setopt correct
 
-# ファイルを色付け表示
+# Colored by file categories
 export LSCOLORS=gxfxcxdxbxegedabagacad
-# 補完時の色の設定
-export LS_COLORS='di=01;36:ln=01;35:so=01;32:ex=01;31:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30'
-# 補完候補の色付け
-export ZLS_COLORS=$LS_COLORS
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
-# lsコマンド時、自動をつける
+# Colored results ls commands. 
 export CLICOLOR=true
 
 
@@ -87,32 +83,36 @@ export CLICOLOR=true
 ### Complement
 #############################################################################################
 
-autoload -U compinit; compinit -u         # 補完機能を有効にする
-setopt auto_list                          # 補完候補を一覧で表示する
-setopt auto_menu                          # TABで補完候補を順に切り替える
-setopt auto_param_keys                    # 対応する括弧を自動補完する
-zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}' # 補完時に大文字小文字を区別しない
+autoload -U compinit; compinit -u         # Enabled auto completion
+setopt auto_list                          # Show the list of completion choices
+setopt auto_menu                          # Select choices with pushing TAB
+setopt auto_param_keys                    # Parens auto completion
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}' # Ignore large case or small case
+# Colored
+export LS_COLORS='di=01;36:ln=01;35:so=01;32:ex=01;31:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30'
+# Colored completions
+export ZLS_COLORS=$LS_COLORS
 
 
 #############################################################################################
 ### History
 #############################################################################################
 
-# 履歴を保存するファイル
+# File of saveing history
 HISTFILE=~/.zsh_history
-# メモリに展開する履歴の数
-HISTSIZE=10000
-# 保存する履歴の数
+# Number of histories mapped a memory
+HISTSIZE=100
+# Number of historyies
 SAVEHIST=10000
-# 直前と同じコマンドを履歴に追加しない
+# Don't save a same command
 setopt hist_ignore_dups 
-# historyコマンドは履歴に保存しない
+# Dont't save a hisotry command
 setopt hist_no_store
-# 余分なスペースを削除して履歴に保存
+# Delete redundant white spaces from a command
 setopt hist_reduce_blanks
-# すぐに履歴ファイルに記録する
+# Save hisotry smoothly
 setopt inc_append_history
-# zshの開始、終了時刻をヒストリファイルに書き込む
+# Save time of starting zsh and ending zsh
 setopt extended_history
 
 
@@ -120,7 +120,7 @@ setopt extended_history
 ### Prompt
 #############################################################################################
 
-# プロンプトに色を付ける
+# Colored prompt
 autoload colors
 colors
 
@@ -130,7 +130,7 @@ RPROMPT="%{${fg[white]}%}%~ %{${reset_color}%}"
 SPROMPT="%{${fg[white]}%}%r is correct? [n,y,a,e]:%{${reset_color}%} "
 
 #############################################################################################
-### rust
+### Rust
 #############################################################################################
 export PATH=$HOME/.cargo/bin:$PATH  # Add a path to rust cargo
 
@@ -138,7 +138,7 @@ export PATH=$HOME/.cargo/bin:$PATH  # Add a path to rust cargo
 ### OPAM
 #############################################################################################
 # OPAM configuration
-. /Users/reverbing/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
+. $HOME/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
 
 
 #############################################################################################
@@ -150,7 +150,7 @@ export PATH=$GOPATH/bin:$PATH
 #############################################################################################
 ### Anaconda
 #############################################################################################
-export PATH=/home/itto-ki/anaconda3/bin:$PATH
+export PATH=$HOME/anaconda3/bin:$PATH
 
 #############################################################################################
 ### Pipenv
