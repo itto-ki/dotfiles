@@ -30,6 +30,7 @@ case ${OSTYPE} in
         alias ls='ls --color=always'
         alias ta='tmux attach -t'
         alias pbcopy='xsel --clipboard --input'
+        alias screenoff='xset dpms force standby'
         ;;
 esac
 alias la='ls -a'
