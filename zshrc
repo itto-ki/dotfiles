@@ -1,38 +1,25 @@
 ############################################################################################
+### OS Type setting
+############################################################################################
+case ${OSTYPE} in
+    linux*)
+        source $HOME/dotfiles/linux.zsh
+        ;;
+    darwin*)
+        source $HOME/dotfiles/darwin.zsh
+        ;;
+esac
+
+############################################################################################
 ### Environmental variables
 ############################################################################################
 
-case ${OSTYPE} in
-    darwin*)
-        export PATH=/usr/local/bin:/usr/local/sbin:/usr/texbin:$HOME/.cargo/bin:$PATH
-        export EDITOR=/Applications/MacVim.app/Contents/MacOS/Vim
-        export LANG=ja_JP.UTF-8
-        export LESSOPEN='| source-highlight %s'
-        export RUST_SRC_PATH=$HOME/.multirust/toolchains/stable-x86_64-apple-darwin/lib/rustlib/src/rust/src
-        ;;
-    linux*)
-        export PATH=$HOME/.local/bin:$PATH  # Add a path to pipenv
-        export EDITOR=vim
-        export LANG=en_US.UTF-8
-        export RUST_SRC_PATH=$HOME/.multirust/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src
-        export LESSOPEN='| /usr/share/source-highlight/src-hilite-lesspipe.sh %s'
-        export PIPENV_VENV_IN_PROJECT=true
-        ;;
-esac
 export LESS='-R'
 
 ############################################################################################
 ### Alias
 ############################################################################################
 
-case ${OSTYPE} in
-    linux*)
-        alias ls='ls --color=always'
-        alias ta='tmux attach -t'
-        alias pbcopy='xsel --clipboard --input'
-        alias screenoff='xset dpms force standby'
-        ;;
-esac
 alias la='ls -a'
 alias ll='ls -l'
 alias vi='vim'
