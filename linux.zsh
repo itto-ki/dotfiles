@@ -39,7 +39,7 @@ export PIPENV_VENV_IN_PROJECT=true
 ### Google Colud Platform SDK
 ############################################################################################
 # The next line updates PATH for the Google Cloud SDK.
-if [ -f '/opt/google-cloud-sdk/path.zsh.inc' ]; then . '/opt/google-cloud-sdk/path.zsh.inc'; fi
+if [ -f '/home/itto-ki/.local/share/google-cloud-sdk/path.zsh.inc' ]; then . '/home/itto-ki/.local/share/google-cloud-sdk/path.zsh.inc'; fi
 
 # The next line enables shell command completion for gcloud.
-if [ -f '/opt/google-cloud-sdk/completion.zsh.inc' ]; then . '/opt/google-cloud-sdk/completion.zsh.inc'; fi
+if [ -f '/home/itto-ki/.local/share/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/itto-ki/.local/share/google-cloud-sdk/completion.zsh.inc'; fi
