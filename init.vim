@@ -390,3 +390,9 @@ au FileType rust nmap gd <Plug>(rust-def)
 au FileType rust nmap sp <Plug>(rust-def-split)
 au FileType rust nmap vs <Plug>(rust-def-vertical)
 au FileType rust nmap <leader>gd <Plug>(rust-doc)
+
+
+" ##########################################################################################
+" ### YAMLの設定
+" ##########################################################################################
+autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
