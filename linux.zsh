@@ -14,6 +14,7 @@ alias ls='ls --color=always'
 alias ta='tmux attach -t'
 alias pbcopy='xsel --clipboard --input'
 alias screenoff='xset dpms force standby'
+alias jupyter=$HOME/anaconda3/bin/jupyter
 
 
 ############################################################################################
