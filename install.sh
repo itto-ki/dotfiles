@@ -3,7 +3,7 @@
 SCRIPT_DIR=$(cd $(dirname $0); pwd)
 NVIMDIR=$HOME/.config/nvim
 NVIMFILES=(init.vim dein.toml dein_lazy.toml)
-DEIN_INSTALLSCRIPT=installer.sh
+DEIN_INSTALLSCRIPT=dein_installer.sh
 CONFIGFIELS=(zshrc tmux.conf)
 TPMDIR=$HOME/.tmux/plugins/tpm
 
