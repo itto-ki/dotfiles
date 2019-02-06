@@ -41,6 +41,9 @@ repo = 'racer-rust/vim-racer'
 repo = 'leafgarland/typescript-vim'
 
 [[plugins]]
+repo = 'pangloss/vim-javascript'
+
+[[plugins]]
 repo = 'maxmellon/vim-jsx-pretty'
 
 [[plugins]]
