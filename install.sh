@@ -7,10 +7,11 @@ DEIN_INSTALLSCRIPT=dein_installer.sh
 CONFIGFIELS=(zshrc tmux.conf)
 TPMDIR=$HOME/.tmux/plugins/tpm
 
-# neovimの設定ファイルを作成
+# neovimの設定ファイル用ディレクトリを作成
 if [ ! -e $NVIMDIR ]; then
     mkdir -p $NVIMDIR
 fi
+# neovimの設定ファイルを作成
 for file in ${NVIMFILES[@]}; do
     if [ ! -e $NVIMDIR/$file ]; then    # ファイルがない場合
         ln -s $SCRIPT_DIR/$file $NVIMDIR/$file      # ファイルのシンボリックリンクを作成
