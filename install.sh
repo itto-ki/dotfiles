@@ -19,8 +19,8 @@ if [ ! -e $NVIM_PLUGIN_DIR ]; then
 fi
 # neovimの設定ファイルを作成
 for file in ${NVIMFILES[@]}; do
-    if [ ! -e $NVIMDIR/$file ]; then    # ファイルがない場合
-        ln -s $SCRIPT_DIR/$file $NVIMDIR/$file      # ファイルのシンボリックリンクを作成
+    if [ ! -e $NVIMDIR/$file ]; then
+        ln -s $SCRIPT_DIR/$file $NVIMDIR/$file
     fi
 done
 # GNU GlobalのためのVim Pluginを追加
