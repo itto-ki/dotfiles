@@ -1,0 +1,9 @@
+[user]
+	email = kimura.itto.kd3@gmail.com
+	name = Ittoh Kimura
+[push]
+	default = simple
+[core]
+	autoCRLF = false
+[pager]
+	branch = cat

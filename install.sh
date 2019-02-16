@@ -6,7 +6,7 @@ NVIM_PLUGIN_DIR=$NVIMDIR/plugin
 NVIMFILES=(init.vim dein.toml dein_lazy.toml)
 GTAGS_VIM_SCRIPT=https://gist.githubusercontent.com/itto-ki/ef1606ea4120ed44383e1eb1518d12c7/raw/2d04567041532db9f18f767175b31911ae4faac0/gtags.vim
 DEIN_INSTALLSCRIPT=dein_installer.sh
-CONFIGFIELS=(zshrc tmux.conf)
+CONFIGFIELS=(zshrc tmux.conf gitconfig)
 TPMDIR=$HOME/.tmux/plugins/tpm
 
 # neovimの設定ファイル用ディレクトリを作成
@@ -40,7 +40,5 @@ fi
 
 # neovim以外の設定ファイルを作成
 for file in ${CONFIGFIELS[@]}; do
-    if [ ! -e $HOME/.$file ]; then        # ファイルがない場合
-        ln -s $SCRIPT_DIR/$file $HOME/.$file    # ファイルのシンボリックリンクを作成
-    fi
+    ln -s $SCRIPT_DIR/$file $HOME/.$file
 done
