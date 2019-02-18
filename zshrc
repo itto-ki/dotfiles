@@ -29,6 +29,7 @@ alias ag='ag --color'
 alias vndl='virsh net-dhcp-leases'
 alias gosh='rlwrap gosh'
 alias ocaml='rlwrap ocaml'
+alias zshr='source $HOME/.zshrc'
 
 
 ############################################################################################
