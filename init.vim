@@ -244,9 +244,9 @@ nnoremap + <C-a>
 " -でカーソル下の数値をデクリメント
 nnoremap - <C-x>
 
-" virtualenv使用のため、システム標準pythonへのパスを追記
-let g:python_host_prog = substitute(system('which python3'), "\n", "", "")
-let g:python3_host_prog = substitute(system('which python3'), "\n", "", "")
+" システム標準pythonへのパスを追記
+let g:python_host_prog = $PYENV_ROOT . '/shims/python'
+let g:python3_host_prog = $PYENV_ROOT . '/shims/python3'
 
 
 " ++++++++++++++++++++++++++++++ 各種プラグインの設定 ++++++++++++++++++++++++++++++
