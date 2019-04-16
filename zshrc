@@ -5,6 +5,9 @@ case ${OSTYPE} in
     linux*)
         source $HOME/dotfiles/linux.zsh
         ;;
+    openbsd*)
+        source $HOME/dotfiles/openbsd.zsh
+        ;;
     darwin*)
         source $HOME/dotfiles/darwin.zsh
         ;;
