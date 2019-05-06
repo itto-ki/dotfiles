@@ -11,6 +11,17 @@ repo = 'Shougo/neosnippet-snippets'
 repo = 'Shougo/vimproc.vim'
 
 [[plugins]]
+repo = 'Shougo/neomru.vim'
+on_path = '.*'
+
+[[plugins]]
+repo = 'Shougo/neoyank.vim'
+
+[[plugins]]
+repo = 'Shougo/denite.nvim'
+depends = ['neomru.vim', 'neoyank.vim']
+
+[[plugins]]
 repo = 'tomasr/molokai'
 
 [[plugins]]
@@ -32,19 +43,4 @@ repo = 'zchee/deoplete-jedi'
 repo = 'scrooloose/syntastic'
 
 [[plugins]]
-repo = 'rust-lang/rust.vim'
-
-[[plugins]]
 repo = 'racer-rust/vim-racer'
-
-[[plugins]]
-repo = 'leafgarland/typescript-vim'
-
-[[plugins]]
-repo = 'pangloss/vim-javascript'
-
-[[plugins]]
-repo = 'maxmellon/vim-jsx-pretty'
-
-[[plugins]]
-repo = 'cespare/vim-toml'

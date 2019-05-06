@@ -1,19 +1,33 @@
 [[plugins]]
-repo = 'Shougo/neomru.vim'
-on_path = '.*'
-
-[[plugins]]
-repo = 'Shougo/neoyank.vim'
-
-[[plugins]]
 repo = 'Shougo/neosnippet'
 depends = ['neosnippet-snippets']
 on_i = 1
 on_ft = ['snippet']
 
 [[plugins]]
-repo = 'Shougo/denite.nvim'
-depends = ['neomru.vim', 'neoyank.vim']
+repo = 'davidhalter/jedi-vim'
+on_ft = ['python']
 
 [[plugins]]
-repo = 'davidhalter/jedi-vim'
+repo = 'fatih/vim-go'
+on_ft = ['go']
+
+[[plugins]]
+repo = 'rust-lang/rust.vim'
+on_ft = ['rust']
+
+[[plugins]]
+repo = 'pangloss/vim-javascript'
+on_ft = ['javascript']
+
+[[plugins]]
+repo = 'leafgarland/typescript-vim'
+on_ft = ['typescript']
+
+[[plugins]]
+repo = 'maxmellon/vim-jsx-pretty'
+on_ft = ['javascript']
+
+[[plugins]]
+repo = 'cespare/vim-toml'
+on_ft = ['toml']
