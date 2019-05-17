@@ -18,7 +18,6 @@ esac
 ############################################################################################
 
 export LESS='-R'
-export GOPATH=$HOME/.go
 
 ############################################################################################
 ### Alias
@@ -123,3 +122,5 @@ PROMPT="%{${fg[white]}%}[%n@%m]$ %{${reset_color}%}"
 PROMPT2="%{${fg[white]}%}[%n@%m]> %{${reset_color}%}"
 RPROMPT="%{${fg[white]}%}%~ %{${reset_color}%}"
 SPROMPT="%{${fg[white]}%}%r is correct? [n,y,a,e]:%{${reset_color}%} "
+
+[[ -s "/home/itto-ki/.gvm/scripts/gvm" ]] && source "/home/itto-ki/.gvm/scripts/gvm"
