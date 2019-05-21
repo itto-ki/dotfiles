@@ -336,10 +336,10 @@ vmap ,, <Plug>NERDCommenterToggle
 " ##########################################################################################
 "
 let g:lightline = {
-      \ 'colorscheme': 'wombat',
-      \ 'separator': {'left': "\u2b80", 'right': "\u2b82"},
-      \ 'subseparator': { 'left': "\u2b81", 'right': "\u2b83"}
-      \ }
+            \ 'colorscheme': 'wombat',
+            \ 'separator': { 'left': "\ue0b0", 'right': "\ue0b2" },
+            \ 'subseparator': { 'left': "\ue0b1", 'right': "\ue0b3" }
+            \ }
 
 
 
