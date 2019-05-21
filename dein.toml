@@ -34,13 +34,4 @@ repo = 'itchyny/lightline.vim'
 repo = 'nathanaelkane/vim-indent-guides'
 
 [[plugins]]
-repo = 'davidhalter/jedi-vim'
-
-[[plugins]]
-repo = 'zchee/deoplete-jedi'
-
-[[plugins]]
 repo = 'scrooloose/syntastic'
-
-[[plugins]]
-repo = 'racer-rust/vim-racer'
