@@ -6,6 +6,7 @@ export EDITOR=vim
 export LANG=en_US.UTF-8
 # coloring for less
 export LESSOPEN='| /usr/share/source-highlight/src-hilite-lesspipe.sh %s'
+export GOPATH=$HOME/.go
 
 ############################################################################################
 ### Alias
