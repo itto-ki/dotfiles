@@ -1,11 +1,4 @@
 ############################################################################################
-### specific settings for this machine
-############################################################################################
-if [ -e $HOME/.special.zsh ]; then
-    source $HOME/.special.zsh
-fi
-
-############################################################################################
 ### Environmental variables
 ############################################################################################
 export PATH=$HOME/homebrew/bin:/usr/local/bin:/usr/local/sbin:/usr/texbin:$HOME/.cargo/bin:$PATH
@@ -16,6 +9,7 @@ export RUST_SRC_PATH=$HOME/.multirust/toolchains/stable-x86_64-apple-darwin/lib/
 export GOPATH=$HOME/go
 export PATH=$PATH:${GOPATH//://bin:}/bin
 export PATH=$HOME/google-cloud-sdk/bin:$PATH
+
 
 ############################################################################################
 ### Pyenv & Pipenv
