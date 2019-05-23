@@ -34,7 +34,6 @@ export LESS='-R'
 
 alias la='ls -a'
 alias ll='ls -l'
-alias vi='vim'
 alias tmux='tmux -2'
 alias grep='grep -n --color=always'
 alias ag='ag --color'
