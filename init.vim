@@ -138,6 +138,8 @@ set confirm
 " スワップファイルを作成する
 set swapfile
 set directory=~/.config/nvim/swap
+" バックアップファイルのディレクトリ
+set backupdir=$HOME/.config/nvim/backup
 
 
 

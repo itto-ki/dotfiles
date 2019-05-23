@@ -23,6 +23,9 @@ for file in ${NVIMFILES[@]}; do
         ln -s $SCRIPT_DIR/$file $NVIMDIR/$file
     fi
 done
+# neovimのバックアップ用ディレクトリを生成
+mkdir -p $NVIMDIR/backup
+
 # GNU GlobalのためのVim Pluginを追加
 curl $GTAGS_VIM_SCRIPT > $NVIM_PLUGIN_DIR/gtags.vim
 
