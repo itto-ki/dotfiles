@@ -261,8 +261,10 @@ let g:deoplete#enable_at_startup = 1
 
 
 " ##########################################################################################
-" ### uniteの設定
+" ### deniteの設定
 " ##########################################################################################
+" Change fire/rec command
+call denite#custom#var('file/rec', 'command', ['ag', '--follow', '--nocolor', '--nogroup', '-g', ''])
 " バッファ一覧
 nmap <silent> <C-u><C-b> :<C-u>Denite buffer<CR>
 " レジスタ一覧
