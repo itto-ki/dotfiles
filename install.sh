@@ -9,9 +9,9 @@ DEIN_INSTALLSCRIPT=dein_installer.sh
 CONFIGFIELS=(zshrc tmux.conf gitconfig)
 TPMDIR=$HOME/.tmux/plugins/tpm
 
-# neovimの設定ファイル用ディレクトリを作成
-if [ ! -e $NVIMDIR ]; then
-    mkdir -p $NVIMDIR
+# neovimの設定ファイル用ディレクトリをバックアップ用のディレクトリごと生成
+if [ ! -e $NVIMDIR/backup ]; then
+    mkdir -p $NVIMDIR/backup
 fi
 # neovimのプラグイン用ディレクトリを作成
 if [ ! -e $NVIM_PLUGIN_DIR ]; then
@@ -23,8 +23,6 @@ for file in ${NVIMFILES[@]}; do
         ln -s $SCRIPT_DIR/$file $NVIMDIR/$file
     fi
 done
-# neovimのバックアップ用ディレクトリを生成
-mkdir -p $NVIMDIR/backup
 
 # GNU GlobalのためのVim Pluginを追加
 curl $GTAGS_VIM_SCRIPT > $NVIM_PLUGIN_DIR/gtags.vim
