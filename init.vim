@@ -413,6 +413,16 @@ au FileType rust nmap <leader>gd <Plug>(rust-doc)
 
 
 " ##########################################################################################
+" ### Golangの設定
+" ##########################################################################################
+" Highlight
+autocmd FileType go :highlight goErr cterm=bold ctermfg=214
+autocmd FileType go :match goErr /\<err\>/
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_structs = 1
+
+" ##########################################################################################
 " ### YAMLの設定
 " ##########################################################################################
 autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
