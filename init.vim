@@ -349,17 +349,31 @@ let NERDSpaceDelims = 1
 nmap ,, <Plug>NERDCommenterToggle
 vmap ,, <Plug>NERDCommenterToggle
 
+" ##########################################################################################
+" ### Tagbarの設定
+" ##########################################################################################
+" Vim開始時にTagbarを開く
+autocmd VimEnter * TagbarOpen
 
 
 " ##########################################################################################
 " ### lightline.vimの設定
 " ##########################################################################################
 "
-let g:lightline = {
-            \ 'colorscheme': 'wombat',
-            \ 'separator': { 'left': "\ue0b0", 'right': "\ue0b2" },
-            \ 'subseparator': { 'left': "\ue0b1", 'right': "\ue0b3" }
-            \ }
+let os = substitute(system('uname'), '\n', '', '')
+if os == 'Darwin' || os == 'Mac'
+    let g:lightline = {
+                \ 'colorscheme': 'wombat',
+                \ 'separator': { 'left': "\ue0b0", 'right': "\ue0b2" },
+                \ 'subseparator': { 'left': "\ue0b1", 'right': "\ue0b3" }
+                \ }
+elseif os == 'Linux'
+    let g:lightline = {
+                \ 'colorscheme': 'wombat',
+                \ 'separator': { 'left': "\u2b80", 'right': "\u2b82" },
+                \ 'subseparator': { 'left': "\u2b81", 'right': "\u2b83" }
+                \ }
+endif
 
 
 
