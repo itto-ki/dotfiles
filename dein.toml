@@ -28,6 +28,9 @@ repo = 'tomasr/molokai'
 repo = 'scrooloose/nerdcommenter'
 
 [[plugins]]
+repo = 'scrooloose/nerdtree'
+
+[[plugins]]
 repo = 'itchyny/lightline.vim'
 
 [[plugins]]
