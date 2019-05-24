@@ -265,6 +265,9 @@ let g:deoplete#enable_at_startup = 1
 " ##########################################################################################
 " Change fire/rec command
 call denite#custom#var('file/rec', 'command', ['ag', '--follow', '--nocolor', '--nogroup', '-g', ''])
+" <C-n>, <C-p>で上下移動
+call denite#custom#map('insert', '<C-n>', '<denite:move_to_next_line>', 'noremap')
+call denite#custom#map('insert', '<C-p>', '<denite:move_to_previous_line>', 'noremap')
 " バッファ一覧
 nmap <silent> <C-u><C-b> :<C-u>Denite buffer<CR>
 " レジスタ一覧
