@@ -259,6 +259,13 @@ let g:python3_host_prog = $PYENV_ROOT . '/shims/python3'
 "
 let g:deoplete#enable_at_startup = 1
 
+" ##########################################################################################
+" ### LanguageClient-neovimの設定
+" ##########################################################################################
+let g:LanguageClient_serverCommands = {
+    \ 'python': ['$HOME' . '/.pyenv/shims/pyls'],
+    \ 'go': ['$GOPATH' . '/bin/go-langserver', '-gocodecompletion'],
+    \}
 
 " ##########################################################################################
 " ### deniteの設定
@@ -301,23 +308,6 @@ endif
 let g:neosnippet#enable_snipmate_compatibility = 1
 " Tell Neosnippet about the other snippets
 let g:neosnippet#snippets_directory='~/.cache/dein/repos/github.com/Shougo/neosnippet-snippets/neosnippets'
-
-
-
-" ##########################################################################################
-" ### jediの設定
-" ##########################################################################################
-
-" docstringを非表示に
-autocmd FileType python setlocal completeopt-=preview
-
-autocmd FileType python setlocal omnifunc=jedi#completions
-let g:jedi#auto_vim_configuration = 0
-let g:jedi#completions_enabled = 0
-if !exists('g:neocomplete#force_omni_input_patterns')
-    let g:deoplete#omni_patterns = {}
-endif
-let g:deoplete#omni_patterns.python = '\h\w*\|[^. \t]\.\w*'
 
 
 
