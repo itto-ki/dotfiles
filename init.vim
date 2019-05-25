@@ -262,9 +262,11 @@ let g:deoplete#enable_at_startup = 1
 " ##########################################################################################
 " ### LanguageClient-neovimの設定
 " ##########################################################################################
+let g:LanguageClient_autoStart = 1
 let g:LanguageClient_serverCommands = {
     \ 'python': ['$HOME' . '/.pyenv/shims/pyls'],
     \ 'go': ['$GOPATH' . '/bin/go-langserver', '-gocodecompletion'],
+    \ 'typescript': ['javascript-typescript-stdio'],
     \}
 
 " ##########################################################################################
