@@ -263,6 +263,8 @@ let g:deoplete#enable_at_startup = 1
 " ### LanguageClient-neovimの設定
 " ##########################################################################################
 let g:LanguageClient_autoStart = 1
+" コード診断結果をリアルタイムするか否か
+" let g:LanguageClient_diagnosticsEnable = 0
 let g:LanguageClient_serverCommands = {
     \ 'python': ['$HOME' . '/.pyenv/shims/pyls'],
     \ 'go': ['$GOPATH' . '/bin/go-langserver', '-gocodecompletion'],
