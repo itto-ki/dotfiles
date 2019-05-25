@@ -7,6 +7,8 @@ export LANG=en_US.UTF-8
 # coloring for less
 export LESSOPEN='| /usr/share/source-highlight/src-hilite-lesspipe.sh %s'
 export GOPATH=$HOME/.go
+# settings for n (n is manager of Node.js versions)
+export N_PREFIX=$HOME/.local
 
 ############################################################################################
 ### Alias
@@ -52,9 +54,3 @@ source <(kubectl completion zsh)
 ### NordVPN
 ############################################################################################
 alias nr='nordvpn disconnect; nordvpn connect'
-
-############################################################################################
-### Nodenv
-############################################################################################
-export PATH=$HOME/.nodenv/bin:$PATH
-eval "$(nodenv init -)"
