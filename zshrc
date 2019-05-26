@@ -126,7 +126,18 @@ setopt extended_history
 autoload colors
 colors
 
+# Git
+autoload -Uz vcs_info
+zstyle ':vcs_info:git:*' check-for-changes true
+zstyle ':vcs_info:git:*' stagedstr "%F{yellow}!"
+zstyle ':vcs_info:git:*' unstagedstr "%F{red}+"
+zstyle ':vcs_info:*' formats "%F{green}%c%u[%b]%f"
+zstyle ':vcs_info:*' actionformats '[%b|%a]'
+precmd () { vcs_info }
+setopt prompt_subst
+
 PROMPT="%{${fg[white]}%}[%n@%m]$ %{${reset_color}%}"
 PROMPT2="%{${fg[white]}%}[%n@%m]> %{${reset_color}%}"
 RPROMPT="%{${fg[white]}%}%~ %{${reset_color}%}"
 SPROMPT="%{${fg[white]}%}%r is correct? [n,y,a,e]:%{${reset_color}%} "
+RPROMPT=$RPROMPT'${vcs_info_msg_0_}'
