@@ -30,6 +30,8 @@ export RUST_SRC_PATH=$HOME/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/l
 ### Golang
 ############################################################################################
 export PATH=/usr/local/go/bin:$PATH
+# gvm
+[[ -s "/home/itto-ki/.gvm/scripts/gvm" ]] && source "/home/itto-ki/.gvm/scripts/gvm"
 
 ############################################################################################
 ### Pyenv & Pipenv
