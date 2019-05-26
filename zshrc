@@ -125,15 +125,17 @@ setopt extended_history
 # Colored prompt
 autoload colors
 colors
+# Colors List
+# { black | red | green | yellow | blue | magenta | cyan | white }
 
 # Git
 autoload -Uz vcs_info
+precmd () { vcs_info }
 zstyle ':vcs_info:git:*' check-for-changes true
 zstyle ':vcs_info:git:*' stagedstr "%F{yellow}!"
 zstyle ':vcs_info:git:*' unstagedstr "%F{red}+"
 zstyle ':vcs_info:*' formats "%F{green}%c%u[%b]%f"
 zstyle ':vcs_info:*' actionformats '[%b|%a]'
-precmd () { vcs_info }
 setopt prompt_subst
 
 PROMPT="%{${fg[white]}%}[%n@%m]$ %{${reset_color}%}"
