@@ -41,6 +41,14 @@ alias vndl='virsh net-dhcp-leases'
 alias gosh='rlwrap gosh'
 alias ocaml='rlwrap ocaml'
 alias zshr='source $HOME/.zshrc'
+# Git
+alias gad='git add'
+alias gcm='git commit'
+alias gbr='git branch'
+alias gch='git checkout'
+alias glg='git log'
+alias ggr='git log --graph --oneline'
+
 
 
 ############################################################################################
