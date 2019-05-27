@@ -44,3 +44,5 @@ repo = 'majutsushi/tagbar'
 
 [[plugins]]
 repo = 'autozimu/LanguageClient-neovim'
+rev = 'next'
+build = 'bash install.sh'
