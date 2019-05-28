@@ -31,3 +31,8 @@ on_ft = ['javascript']
 [[plugins]]
 repo = 'cespare/vim-toml'
 on_ft = ['toml']
+
+[[plugins]]
+repo = 'prettier/vim-prettier'
+build = 'npm install'
+on_ft = ['javascript', 'typescript', 'css', 'scss', 'json', 'markdown', 'graphql', 'html', 'yaml', 'toml']
