@@ -269,6 +269,7 @@ let g:LanguageClient_serverCommands = {
     \ 'python': ['pyls'],
     \ 'go': ['go-langserver', '-gocodecompletion'],
     \ 'typescript': ['javascript-typescript-stdio'],
+    \ 'c': ['clangd', '-backgroud-index'],
     \}
 
 " ##########################################################################################
