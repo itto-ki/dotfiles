@@ -218,6 +218,8 @@ if has('mouse')
 endif
 " インサートモードから抜けると自動的にIMEをオフにする
 set imdisable
+" OSとクリップボードを共有する
+set clipboard+=unnamed
 " <Space>. で.vimrcを開く
 nnoremap <Space>, :<C-u>edit $MYVIMRC<Enter>
 " <Space>s. で.vimrcのリロード
