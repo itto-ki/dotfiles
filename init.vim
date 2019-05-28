@@ -218,6 +218,8 @@ if has('mouse')
 endif
 " インサートモードから抜けると自動的にIMEをオフにする
 set imdisable
+" OSとクリップボードを共有する
+set clipboard+=unnamed
 " <Space>. で.vimrcを開く
 nnoremap <Space>, :<C-u>edit $MYVIMRC<Enter>
 " <Space>s. で.vimrcのリロード
@@ -266,9 +268,10 @@ let g:LanguageClient_autoStart = 1
 " コード診断結果をリアルタイムするか否か
 " let g:LanguageClient_diagnosticsEnable = 0
 let g:LanguageClient_serverCommands = {
-    \ 'python': ['$HOME' . '/.pyenv/shims/pyls'],
-    \ 'go': ['$GOPATH' . '/bin/go-langserver', '-gocodecompletion'],
+    \ 'python': ['pyls'],
+    \ 'go': ['go-langserver', '-gocodecompletion'],
     \ 'typescript': ['javascript-typescript-stdio'],
+    \ 'c': ['clangd', '-backgroud-index'],
     \}
 
 " ##########################################################################################
