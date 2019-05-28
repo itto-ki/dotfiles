@@ -325,9 +325,6 @@ let g:syntastic_python_checkers = ['pyflakes', 'pep8']
 " ##########################################################################################
 " ### NERDTreeの設定
 " ##########################################################################################
-" Vim開始時にファイル名が指定されていない場合NERDTreeを起動
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 " Vim終了時にNERDTreeしか残らない場合にNERDTreeごと終了する
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 " <C-n>でNERDTree画面を開閉
