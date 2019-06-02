@@ -1,34 +1,51 @@
-"dein Scripts
-if &compatible
-    set nocomptible
-endif
-
-set runtimepath^=~/.config/nvim/repos/github.com/Shougo/dein.vim
-" dein.vimのディレクトリ
-let s:dein_dir = expand('~/.config/nvim/dein')
-let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
-
-if dein#load_state(s:dein_dir)
-    call dein#begin(s:dein_dir)
-    " 導入プラグインを記述したtomlファイルへのパス
-    let s:toml      = '~/.config/nvim/dein.toml'
-    let s:lazy_toml = '~/.config/nvim/dein_lazy.toml'
-    call dein#load_toml(s:toml, {'lazy':0})
-    call dein#load_toml(s:lazy_toml, {'lazy':1})
-    call dein#end()
-    call dein#save_state()
-endif
-
-" 依存関係の問題でvimprocだけは先にチェックする
-if dein#check_install(['vimproc.vim'])
-    call dein#install(['vimproc.vim'])
-endif
-" その他のプラグインチェックする
-if dein#check_install()
-    call dein#install()
-endif
-
-filetype plugin indent on
+" ################################################################################
+" ### vim-plug
+" ################################################################################
+call plug#begin()
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'Shougo/neosnippet-snippets'
+Plug 'Shougo/vimproc.vim'
+Plug 'Shougo/neomru.vim'
+Plug 'Shougo/neoyank.vim'
+Plug 'Shougo/denite.nvim'
+Plug 'tomasr/molokai'
+Plug 'scrooloose/nerdcommenter'
+Plug 'scrooloose/nerdtree'
+Plug 'itchyny/lightline.vim'
+Plug 'nathanaelkane/vim-indent-guides'
+Plug 'scrooloose/syntastic'
+Plug 'majutsushi/tagbar'
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
+Plug 'Shougo/neosnippet'
+Plug 'Shougo/neosnippet-snippets'
+Plug 'fatih/vim-go', {
+    \ 'do': ':GoUpdateBinaries',
+    \ 'for': 'go'
+    \ }
+Plug 'rust-lang/rust.vim', { 'for': 'rust' }
+Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
+Plug 'maxmellon/vim-jsx-pretty', { 'for': 'javascript' }
+Plug 'leafgarland/typescript-vim', { 'for': 'typescript' }
+Plug 'cespare/vim-toml', { 'for': 'toml' }
+Plug 'prettier/vim-prettier', {
+    \ 'do': 'yarn install',
+    \' branch': 'release/1.x',
+    \ 'for': [
+        \ 'javascript',
+        \ 'typescript',
+        \ 'css',
+        \ 'scss',
+        \ 'json',
+        \ 'markdown',
+        \ 'graphql',
+        \ 'html',
+        \ 'yaml',
+        \ 'toml'
+    \ ]}
+call plug#end()
 
 " ################################################################################
 " ### 画面表示の設定
@@ -314,8 +331,6 @@ endif
 
 " Enable snipMate compatibility feature.
 let g:neosnippet#enable_snipmate_compatibility = 1
-" Tell Neosnippet about the other snippets
-let g:neosnippet#snippets_directory='~/.cache/dein/repos/github.com/Shougo/neosnippet-snippets/neosnippets'
 
 
 
