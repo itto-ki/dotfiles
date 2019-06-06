@@ -365,7 +365,7 @@ let g:syntastic_python_checkers = ['pyflakes', 'pep8']
 " Vim終了時にNERDTreeしか残らない場合にNERDTreeごと終了する
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 " <C-w>でNERDTree画面を開閉
-map <C-w> :NERDTreeToggle<CR>
+map <C-n> :NERDTreeToggle<CR>
 
 
 
