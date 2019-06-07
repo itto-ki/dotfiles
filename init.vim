@@ -46,6 +46,7 @@ Plug 'prettier/vim-prettier', {
         \ 'yaml',
         \ 'toml'
     \ ]}
+Plug 'tpope/vim-fugitive'
 call plug#end()
 
 " ################################################################################
