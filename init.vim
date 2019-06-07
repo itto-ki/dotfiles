@@ -442,7 +442,8 @@ autocmd FileType go :match goErr /\<err\>/
 let g:go_highlight_functions = 1
 let g:go_highlight_methods = 1
 let g:go_highlight_structs = 1
-"
+let g:go_fmt_command = "goimports"
+
 autocmd FileType go setlocal sw=4 ts=4 sts=4 noet
 
 
