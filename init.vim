@@ -271,6 +271,12 @@ nnoremap - <C-x>
 let g:python_host_prog = $PYENV_ROOT . '/shims/python'
 let g:python3_host_prog = $PYENV_ROOT . '/shims/python3'
 
+" ファイルを閉じる時にQuickFixウインドウしか残らないのであればQuickFixウインドウを自動クローズ
+augroup QfAutoCommands
+  autocmd!
+  autocmd WinEnter * if (winnr('$') == 1) && (getbufvar(winbufnr(0), '&buftype')) == 'quickfix' | quit | endif
+augroup END
+
 
 " ++++++++++++++++++++++++++++++ 各種プラグインの設定 ++++++++++++++++++++++++++++++
 "
