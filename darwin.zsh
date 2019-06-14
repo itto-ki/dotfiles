@@ -4,7 +4,7 @@
 export PATH=/usr/texbin:$HOME/.cargo/bin:$PATH
 export EDITOR=nvim
 export LANG=ja_JP.UTF-8
-export RUST_SRC_PATH=$HOME/.multirust/toolchains/stable-x86_64-apple-darwin/lib/rustlib/src/rust/src
+export RUST_SRC_PATH=$HOME/.rustup/toolchains/stable-x86_64-apple-darwin/lib/rustlib/src/rust/src
 export PATH=$PATH:${GOPATH//://bin:}/bin
 export PATH=$HOME/google-cloud-sdk/bin:$PATH
 

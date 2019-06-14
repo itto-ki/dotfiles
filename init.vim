@@ -293,7 +293,7 @@ let g:LanguageClient_autoStart = 1
 " コード診断結果をリアルタイムするか否か
 " let g:LanguageClient_diagnosticsEnable = 0
 let g:LanguageClient_serverCommands = {
-    \ 'rust': ['rls'],
+    \ 'rust': ['rustup', 'run', 'stable', 'rls'],
     \ 'python': ['pyls'],
     \ 'go': ['go-langserver', '-gocodecompletion'],
     \ 'typescript': ['javascript-typescript-stdio'],
