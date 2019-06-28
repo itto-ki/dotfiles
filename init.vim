@@ -298,6 +298,7 @@ let g:LanguageClient_serverCommands = {
     \ 'go': ['go-langserver', '-gocodecompletion'],
     \ 'typescript': ['javascript-typescript-stdio'],
     \ 'c': ['clangd', '-backgroud-index'],
+    \ 'dockerfile': ['docker-langserver --stdio'],
     \}
 
 " ##########################################################################################
