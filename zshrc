@@ -152,3 +152,9 @@ PROMPT2="%{${fg[white]}%}[%n@%m]> %{${reset_color}%}"
 RPROMPT="%{${fg[white]}%}%~ %{${reset_color}%}"
 SPROMPT="%{${fg[white]}%}%r is correct? [n,y,a,e]:%{${reset_color}%} "
 RPROMPT=$RPROMPT'${vcs_info_msg_0_}'
+
+
+#############################################################################################
+### direnv
+#############################################################################################
+eval "$(direnv hook zsh)"
