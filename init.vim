@@ -27,6 +27,7 @@ Plug 'fatih/vim-go', {
     \ 'for': 'go'
     \ }
 Plug 'rust-lang/rust.vim', { 'for': 'rust' }
+Plug 'nvie/vim-flake8'
 Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
 Plug 'maxmellon/vim-jsx-pretty', { 'for': 'javascript' }
 Plug 'leafgarland/typescript-vim', { 'for': 'typescript' }

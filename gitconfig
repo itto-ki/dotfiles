@@ -2,7 +2,7 @@
 	email = kimura.itto.kd3@gmail.com
 	name = Ittoh Kimura
 [push]
-	default = simple
+	default = current
 [core]
 	autoCRLF = false
 [pager]
