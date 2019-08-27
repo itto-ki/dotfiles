@@ -15,7 +15,6 @@ Plug 'scrooloose/nerdtree'
 Plug 'itchyny/lightline.vim'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'scrooloose/syntastic'
-Plug 'majutsushi/tagbar'
 Plug 'autozimu/LanguageClient-neovim', {
     \ 'branch': 'next',
     \ 'do': 'bash install.sh',
@@ -399,11 +398,6 @@ let NERDSpaceDelims = 1
 nmap ,, <Plug>NERDCommenterToggle
 vmap ,, <Plug>NERDCommenterToggle
 
-" ##########################################################################################
-" ### Tagbarの設定
-" ##########################################################################################
-" Vim開始時にTagbarを開く
-autocmd VimEnter * TagbarOpen
 
 
 " ##########################################################################################
