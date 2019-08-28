@@ -21,7 +21,6 @@ if [ -e $HOME/.special.zsh ]; then
     source $HOME/.special.zsh
 fi
 
-
 ############################################################################################
 ### Environmental variables
 ############################################################################################
@@ -130,6 +129,13 @@ setopt extended_history
 #############################################################################################
 ### Prompt
 #############################################################################################
+# CUIで使用できるカラーコードを表示する
+function palette () {
+    for c in {000..255};
+    do
+        echo -n "\e[38;5;${c}m $c" ; [ $(($c%16)) -eq 15 ] && echo;
+    done;
+}
 
 # Colored prompt
 autoload colors
@@ -142,11 +148,15 @@ autoload -Uz vcs_info
 precmd () { vcs_info }
 zstyle ':vcs_info:git:*' check-for-changes true
 zstyle ':vcs_info:git:*' stagedstr "%F{yellow}!"
-zstyle ':vcs_info:git:*' unstagedstr "%F{red}+"
+zstyle ':vcs_info:git:*' unstagedstr "%F{197}+"
 zstyle ':vcs_info:*' formats "%F{green}%c%u[%b]%f"
 zstyle ':vcs_info:*' actionformats '[%b|%a]'
 setopt prompt_subst
 
+### %K{num}: background color
+### %F{num}: characters color
+### %f{num}: resetcharacters color
+### %k{num}: reset background color
 PROMPT="%{${fg[white]}%}[%n@%m]$ %{${reset_color}%}"
 PROMPT2="%{${fg[white]}%}[%n@%m]> %{${reset_color}%}"
 RPROMPT="%{${fg[white]}%}%~ %{${reset_color}%}"
