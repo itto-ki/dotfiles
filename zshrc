@@ -172,7 +172,6 @@ zstyle ':vcs_info:git:*' check-for-changes true
 zstyle ':vcs_info:git:*' stagedstr "%F{yellow}!"
 zstyle ':vcs_info:git:*' unstagedstr "%F{015}+"
 zstyle ':vcs_info:*' formats "${WG}  %c%u%b%f ${G_}⮀"
->>>>>>> Stashed changes
 zstyle ':vcs_info:*' actionformats '[%b|%a]'
 setopt prompt_subst
 
