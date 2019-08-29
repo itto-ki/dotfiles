@@ -196,9 +196,9 @@ WR2="%F{015}%K{088}"   # WHITE_RED2
 
 PROMPT="${WR}${OSICON}  %m ${RB}⮀ ${WB}  %~ ${BP}⮀ ${WP}  %n  ${reset_color}${P_}⮀"
 PROMPT=${PROMPT}'${vcs_info_msg_0_}
-${reset_color}${W_}$ '
-PROMPT2="%{${fg[white]}%}[%n@%m]> %{${reset_color}%}"
-SPROMPT="%{${fg[white]}%}%r is correct? [n,y,a,e]:%{${reset_color}%} "
+${reset_color}${W_}$ %{${reset_color}%}'
+PROMPT2="%{${W_}%}[%n@%m]> %{${reset_color}%}"
+SPROMPT="%{${W_}%}%r is correct? [n,y,a,e]:%{${reset_color}%} "
 
 
 #############################################################################################
