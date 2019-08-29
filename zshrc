@@ -169,9 +169,9 @@ colors
 autoload -Uz vcs_info
 precmd () { vcs_info }
 zstyle ':vcs_info:git:*' check-for-changes true
-zstyle ':vcs_info:git:*' stagedstr "%F{yellow}!"
-zstyle ':vcs_info:git:*' unstagedstr "%F{015}+"
-zstyle ':vcs_info:*' formats "${DEL}${PG}⮀ ${WG}  %c%u%b%f ${G_}⮀"
+zstyle ':vcs_info:git:*' stagedstr "  "
+zstyle ':vcs_info:git:*' unstagedstr "  "
+zstyle ':vcs_info:*' formats "${DEL}${DEL}${PG}⮀ ${WG}  %c%u%b%f ${G_}⮀"
 zstyle ':vcs_info:*' actionformats '[%b|%a]'
 setopt prompt_subst
 
@@ -179,23 +179,25 @@ setopt prompt_subst
 ### %F{num}: characters color
 ### %f{num}: resetcharacters color
 ### %k{num}: reset background color
-DEL=$(echo -e "")    # 削除文字
-WB="%F{015}%K{031}"
-BP="%F{031}%K{135}"
-WR="%F{015}%K{052}"
-RB="%F{052}%K{031}"
-WP="%F{015}%K{135}"
-PG="%F{135}%K{064}"
-P_="%F{135}"
-WG="%F{015}%K{064}"
-G_="${reset_color}%F{064}"
-W_="%F{015}"
+DEL=$(echo -e "")    # 削除文字
+WB="%F{015}%K{031}"    # WRITE_BLUE
+BP="%F{031}%K{135}"    # BLUE_PURPLE
+WR="%F{015}%K{052}"    # WHITE_RED
+RB="%F{052}%K{031}"    # RED_BLUE
+WP="%F{015}%K{135}"    # WHITE_PURPLE
+PG="%F{135}%K{064}"    # PURPLE_GREEN
+P_="%F{135}"           # PURPLE_
+WG="%F{015}%K{064}"    # WHITE_GREEN
+G_="${reset_color}%F{064}"    # GREEN_
+W_="%F{015}"           # WHITE_
+PR="%F{135}%K{088}"    # PURPLE_RED
+WR2="%F{015}%K{088}"   # WHITE_RED2
 
 
-PROMPT="${WR}${OSICON}  %m ${RB}⮀ ${WB}  %~ ${BP}⮀ ${WP}  %n ${reset_color}${P_}⮀ ${vcs_info_msg_0_}
-${reset_color}${W_}$ ${reset_color}"
+PROMPT="${WR}${OSICON}  %m ${RB}⮀ ${WB}  %~ ${BP}⮀ ${WP}  %n  ${reset_color}${P_}⮀"
+PROMPT=${PROMPT}'${vcs_info_msg_0_}
+${reset_color}${W_}$ '
 PROMPT2="%{${fg[white]}%}[%n@%m]> %{${reset_color}%}"
-RPROMPT="%{${fg[white]}%}%~ %{${reset_color}%}"
 SPROMPT="%{${fg[white]}%}%r is correct? [n,y,a,e]:%{${reset_color}%} "
 
 
