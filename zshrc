@@ -137,6 +137,28 @@ function palette () {
     done;
 }
 
+# IconFont一覧を表示
+function iconfont () {
+    # for i in {61545..62178};
+    for i in {61446..62235};
+    do
+        echo -n -e "$(printf '\\u%x' $i) ";
+    done
+}
+
+case ${OSTYPE} in
+    linux*)
+        OSICON=""
+        ;;
+    darwin*)
+        OSICON=""
+        ;;
+    openbsd*)
+        ;;
+esac
+
+
+
 # Colored prompt
 autoload colors
 colors
@@ -148,8 +170,9 @@ autoload -Uz vcs_info
 precmd () { vcs_info }
 zstyle ':vcs_info:git:*' check-for-changes true
 zstyle ':vcs_info:git:*' stagedstr "%F{yellow}!"
-zstyle ':vcs_info:git:*' unstagedstr "%F{197}+"
-zstyle ':vcs_info:*' formats "%F{green}%c%u[%b]%f"
+zstyle ':vcs_info:git:*' unstagedstr "%F{015}+"
+zstyle ':vcs_info:*' formats "${WG}  %c%u%b%f ${G_}⮀"
+>>>>>>> Stashed changes
 zstyle ':vcs_info:*' actionformats '[%b|%a]'
 setopt prompt_subst
 
@@ -157,11 +180,23 @@ setopt prompt_subst
 ### %F{num}: characters color
 ### %f{num}: resetcharacters color
 ### %k{num}: reset background color
-PROMPT="%{${fg[white]}%}[%n@%m]$ %{${reset_color}%}"
+WB="%F{015}%K{031}"
+BP="%F{031}%K{135}"
+WR="%F{015}%K{052}"
+RB="%F{052}%K{031}"
+WP="%F{015}%K{135}"
+PG="%F{135}%K{064}"
+P_="%F{135}"
+WG="%F{015}%K{064}"
+G_="${reset_color}%F{064}"
+W_="%F{015}"
+
+
+PROMPT="${WR}${OSICON}  %m ${RB}⮀ ${WB}  %~ ${BP}⮀ ${WP}  %n ${reset_color}${P_}⮀ ${vcs_info_msg_0_}
+${reset_color}${W_}$ ${reset_color}"
 PROMPT2="%{${fg[white]}%}[%n@%m]> %{${reset_color}%}"
 RPROMPT="%{${fg[white]}%}%~ %{${reset_color}%}"
 SPROMPT="%{${fg[white]}%}%r is correct? [n,y,a,e]:%{${reset_color}%} "
-RPROMPT=$RPROMPT'${vcs_info_msg_0_}'
 
 
 #############################################################################################
