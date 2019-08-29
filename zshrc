@@ -171,7 +171,7 @@ precmd () { vcs_info }
 zstyle ':vcs_info:git:*' check-for-changes true
 zstyle ':vcs_info:git:*' stagedstr "%F{yellow}!"
 zstyle ':vcs_info:git:*' unstagedstr "%F{015}+"
-zstyle ':vcs_info:*' formats "${WG}  %c%u%b%f ${G_}⮀"
+zstyle ':vcs_info:*' formats "${DEL}${PG}⮀ ${WG}  %c%u%b%f ${G_}⮀"
 zstyle ':vcs_info:*' actionformats '[%b|%a]'
 setopt prompt_subst
 
@@ -179,6 +179,7 @@ setopt prompt_subst
 ### %F{num}: characters color
 ### %f{num}: resetcharacters color
 ### %k{num}: reset background color
+DEL=$(echo -e "")    # 削除文字
 WB="%F{015}%K{031}"
 BP="%F{031}%K{135}"
 WR="%F{015}%K{052}"
