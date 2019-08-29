@@ -171,7 +171,7 @@ precmd () { vcs_info }
 zstyle ':vcs_info:git:*' check-for-changes true
 zstyle ':vcs_info:git:*' stagedstr "  "
 zstyle ':vcs_info:git:*' unstagedstr "  "
-zstyle ':vcs_info:*' formats "${DEL}${DEL}${PG}⮀ ${WG}  %c%u%b%f ${G_}⮀"
+zstyle ':vcs_info:*' formats "${DEL}${DEL}%{${PG}%}⮀ %{${WG}%}  %c%u%b%f %{${G_}%}⮀"
 zstyle ':vcs_info:*' actionformats '[%b|%a]'
 setopt prompt_subst
 
@@ -182,8 +182,8 @@ setopt prompt_subst
 DEL=$(echo -e "")    # 削除文字
 WB="%F{015}%K{031}"    # WRITE_BLUE
 BP="%F{031}%K{135}"    # BLUE_PURPLE
-WR="%F{015}%K{052}"    # WHITE_RED
-RB="%F{052}%K{031}"    # RED_BLUE
+WR="%F{015}%K{124}"    # WHITE_RED
+RB="%F{124}%K{031}"    # RED_BLUE
 WP="%F{015}%K{135}"    # WHITE_PURPLE
 PG="%F{135}%K{064}"    # PURPLE_GREEN
 P_="%F{135}"           # PURPLE_
@@ -191,13 +191,12 @@ WG="%F{015}%K{064}"    # WHITE_GREEN
 G_="${reset_color}%F{064}"    # GREEN_
 W_="%F{015}"           # WHITE_
 PR="%F{135}%K{088}"    # PURPLE_RED
-WR2="%F{015}%K{088}"   # WHITE_RED2
 
 
-PROMPT="${WR}${OSICON}  %m ${RB}⮀ ${WB}  %~ ${BP}⮀ ${WP}  %n  ${reset_color}${P_}⮀"
+PROMPT="%{${WR}%}${OSICON}  %m %{${RB}%}⮀ %{${WB}%}  %~ %{${BP}%}⮀ %{${WP}%}  %n  %{${reset_color}%}%{${P_}%}⮀"
 PROMPT=${PROMPT}'${vcs_info_msg_0_}
-${reset_color}${W_}$ %{${reset_color}%}'
-PROMPT2="%{${W_}%}[%n@%m]> %{${reset_color}%}"
+%{${reset_color}%}%{${W_}%}$ %{${reset_color}%}'
+PROMPT2="%{${W_}%}> %{${reset_color}%}"
 SPROMPT="%{${W_}%}%r is correct? [n,y,a,e]:%{${reset_color}%} "
 
 
