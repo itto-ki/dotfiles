@@ -137,32 +137,71 @@ function palette () {
     done;
 }
 
+# IconFont一覧を表示
+function iconfont () {
+    # for i in {61545..62178};
+    for i in {61446..62235};
+    do
+        echo -n -e "$(printf '\\u%x' $i) ";
+    done
+}
+
+case ${OSTYPE} in
+    linux*)
+        OSICON=""
+        ;;
+    darwin*)
+        OSICON=""
+        ;;
+    openbsd*)
+        ;;
+esac
+
+
+
 # Colored prompt
 autoload colors
 colors
 # Colors List
 # { black | red | green | yellow | blue | magenta | cyan | white }
-
-# Git
-autoload -Uz vcs_info
-precmd () { vcs_info }
-zstyle ':vcs_info:git:*' check-for-changes true
-zstyle ':vcs_info:git:*' stagedstr "%F{yellow}!"
-zstyle ':vcs_info:git:*' unstagedstr "%F{197}+"
-zstyle ':vcs_info:*' formats "%F{green}%c%u[%b]%f"
-zstyle ':vcs_info:*' actionformats '[%b|%a]'
-setopt prompt_subst
-
+#
 ### %K{num}: background color
 ### %F{num}: characters color
 ### %f{num}: resetcharacters color
 ### %k{num}: reset background color
-PROMPT="%{${fg[white]}%}[%n@%m]$ %{${reset_color}%}"
-PROMPT2="%{${fg[white]}%}[%n@%m]> %{${reset_color}%}"
-RPROMPT="%{${fg[white]}%}%~ %{${reset_color}%}"
-SPROMPT="%{${fg[white]}%}%r is correct? [n,y,a,e]:%{${reset_color}%} "
-RPROMPT=$RPROMPT'${vcs_info_msg_0_}'
+DEL=$(echo -e "")    # 削除文字
+WB="%F{015}%K{031}"    # WRITE_BLUE
+BP="%F{031}%K{135}"    # BLUE_PURPLE
+WR="%F{015}%K{124}"    # WHITE_RED
+RB="%F{124}%K{031}"    # RED_BLUE
+WP="%F{015}%K{135}"    # WHITE_PURPLE
+PG="%F{135}%K{064}"    # PURPLE_GREEN
+P_="%F{135}"           # PURPLE_
+WG="%F{015}%K{064}"    # WHITE_GREEN
+G_="%F{064}"           # GREEN_
+W_="%F{015}"           # WHITE_
+Y_="%F{226}"           # YELLOW
+WY="%F{015}%K{130}"
+PY="%F{135}%K{130}"
+PR="%F{135}%K{088}"    # PURPLE_RED
+RS="%f%k"
 
+# Git
+autoload -Uz vcs_info
+zstyle ':vcs_info:git:*' check-for-changes true
+zstyle ':vcs_info:git:*' stagedstr "  "
+zstyle ':vcs_info:git:*' unstagedstr "  "
+zstyle ':vcs_info:*' formats "${DEL}${DEL}${PG}⮀ ${WG}  %u%c%b%f ${RS}${G_}⮀"
+zstyle ':vcs_info:*' actionformats "${DEL}${DEL}${PG}⮀ ${WG}    %b|%a ${RS}${G_}⮀"
+ 
+PROMPT='${WR}${OSICON}  %m ${RB}⮀ ${WB}  %~ ${BP}⮀ ${WP}  %n ${RS}${P_}⮀ '
+PROMPT2="%{${W_}%}> ${RS}"
+SPROMPT="%{${W_}%}%r is correct? [n,y,a,e]:%{${reset_color}%} "
+
+PROMPT=${PROMPT}'${vcs_info_msg_0_}
+${Y_}  ${RS}'
+setopt prompt_subst
+precmd () { vcs_info }
 
 #############################################################################################
 ### direnv
