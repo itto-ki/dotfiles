@@ -254,6 +254,14 @@ if OSTYPE == "Linux\n"
         call system('ibus engine "xkb:us::eng"')
     endfunction
     inoremap <silent> <C-[> <ESC>:call ImInActivate()<CR>
+elseif OSTYPE == "Darwin\n"
+  set ttimeoutlen=1
+  let g:imeoff = 'osascript -e "tell application \"System Events\" to key code 102"'
+  augroup MyIMEGroup
+    autocmd!
+    autocmd InsertLeave * :call system(g:imeoff)
+  augroup END
+  noremap <silent> <ESC> <ESC>:call system(g:imeoff)<CR>
 endif
 
 " ##########################################################################################
@@ -387,6 +395,8 @@ let g:syntastic_python_checkers = ['pyflakes', 'pep8']
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 " <C-w>でNERDTree画面を開閉
 map <C-n> :NERDTreeToggle<CR>
+" 隠しファイルも表示
+let NERDTreeShowHidden=1
 
 
 
