@@ -164,17 +164,7 @@ autoload colors
 colors
 # Colors List
 # { black | red | green | yellow | blue | magenta | cyan | white }
-
-# Git
-autoload -Uz vcs_info
-precmd () { vcs_info }
-zstyle ':vcs_info:git:*' check-for-changes true
-zstyle ':vcs_info:git:*' stagedstr "  "
-zstyle ':vcs_info:git:*' unstagedstr "  "
-zstyle ':vcs_info:*' formats "${DEL}${DEL}${RS}${PG}⮀ ${WG}  %c%u%b%f ${RS}${G_}⮀"
-zstyle ':vcs_info:*' actionformats '[%b|%a]'
-setopt prompt_subst
-
+#
 ### %K{num}: background color
 ### %F{num}: characters color
 ### %f{num}: resetcharacters color
@@ -191,15 +181,27 @@ WG="%F{015}%K{064}"    # WHITE_GREEN
 G_="%F{064}"           # GREEN_
 W_="%F{015}"           # WHITE_
 Y_="%F{226}"           # YELLOW
+WY="%F{015}%K{130}"
+PY="%F{135}%K{130}"
 PR="%F{135}%K{088}"    # PURPLE_RED
 RS="%f%k"
 
-PROMPT="${WR}${OSICON}  %m ${RB}⮀ ${WB}  %~ ${BP}⮀ ${WP}  %n ${RS}${P_}⮀ "
-PROMPT=${PROMPT}'${vcs_info_msg_0_}${RS}
-${Y_}    ${RS}'
+# Git
+autoload -Uz vcs_info
+zstyle ':vcs_info:git:*' check-for-changes true
+zstyle ':vcs_info:git:*' stagedstr "  "
+zstyle ':vcs_info:git:*' unstagedstr "  "
+zstyle ':vcs_info:*' formats "${DEL}${DEL}${PG}⮀ ${WG}  %u%c%b%f ${RS}${G_}⮀"
+zstyle ':vcs_info:*' actionformats '[%b|%a]'
+
+PROMPT='${WR}${OSICON}  %m ${RB}⮀ ${WB}  %~ ${BP}⮀ ${WP}  %n ${RS}${P_}⮀ '
 PROMPT2="%{${W_}%}> ${RS}"
 SPROMPT="%{${W_}%}%r is correct? [n,y,a,e]:%{${reset_color}%} "
 
+PROMPT=${PROMPT}'${vcs_info_msg_0_}
+${Y_}    ${RS}'
+setopt prompt_subst
+precmd () { vcs_info }
 
 #############################################################################################
 ### direnv
