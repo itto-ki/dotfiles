@@ -171,7 +171,7 @@ precmd () { vcs_info }
 zstyle ':vcs_info:git:*' check-for-changes true
 zstyle ':vcs_info:git:*' stagedstr "  "
 zstyle ':vcs_info:git:*' unstagedstr "  "
-zstyle ':vcs_info:*' formats "${DEL}${DEL}%{${PG}%}⮀ %{${WG}%}  %c%u%b%f %{${G_}%}⮀"
+zstyle ':vcs_info:*' formats "${DEL}${DEL}${reset_color}${PG}⮀ ${WG}  %c%u%b%f ${reset_color}${G_}⮀"
 zstyle ':vcs_info:*' actionformats '[%b|%a]'
 setopt prompt_subst
 
@@ -188,14 +188,14 @@ WP="%F{015}%K{135}"    # WHITE_PURPLE
 PG="%F{135}%K{064}"    # PURPLE_GREEN
 P_="%F{135}"           # PURPLE_
 WG="%F{015}%K{064}"    # WHITE_GREEN
-G_="${reset_color}%F{064}"    # GREEN_
+G_="%F{064}"    # GREEN_
 W_="%F{015}"           # WHITE_
 PR="%F{135}%K{088}"    # PURPLE_RED
 
 
-PROMPT="%{${WR}%}${OSICON}  %m %{${RB}%}⮀ %{${WB}%}  %~ %{${BP}%}⮀ %{${WP}%}  %n  %{${reset_color}%}%{${P_}%}⮀"
-PROMPT=${PROMPT}'${vcs_info_msg_0_}
-%{${reset_color}%}%{${W_}%}$ %{${reset_color}%}'
+PROMPT="${WR}${OSICON}  %m ${RB}⮀ ${WB}  %~ ${BP}⮀ ${WP}  %n ${reset_color}${P_}⮀ "
+PROMPT=${PROMPT}'${vcs_info_msg_0_}'"%{${reset_color}%}
+%{${W_}%}$ %{${reset_color}%}"
 PROMPT2="%{${W_}%}> %{${reset_color}%}"
 SPROMPT="%{${W_}%}%r is correct? [n,y,a,e]:%{${reset_color}%} "
 
