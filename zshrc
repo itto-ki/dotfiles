@@ -192,14 +192,14 @@ zstyle ':vcs_info:git:*' check-for-changes true
 zstyle ':vcs_info:git:*' stagedstr "  "
 zstyle ':vcs_info:git:*' unstagedstr "  "
 zstyle ':vcs_info:*' formats "${DEL}${DEL}${PG}⮀ ${WG}  %u%c%b%f ${RS}${G_}⮀"
-zstyle ':vcs_info:*' actionformats '[%b|%a]'
-
+zstyle ':vcs_info:*' actionformats "${DEL}${DEL}${PG}⮀ ${WG}    %b|%a ${RS}${G_}⮀"
+ 
 PROMPT='${WR}${OSICON}  %m ${RB}⮀ ${WB}  %~ ${BP}⮀ ${WP}  %n ${RS}${P_}⮀ '
 PROMPT2="%{${W_}%}> ${RS}"
 SPROMPT="%{${W_}%}%r is correct? [n,y,a,e]:%{${reset_color}%} "
 
 PROMPT=${PROMPT}'${vcs_info_msg_0_}
-${Y_}    ${RS}'
+${Y_}  ${RS}'
 setopt prompt_subst
 precmd () { vcs_info }
 
