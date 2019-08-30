@@ -172,6 +172,7 @@ zstyle ':vcs_info:git:*' check-for-changes true
 zstyle ':vcs_info:git:*' stagedstr "  "
 zstyle ':vcs_info:git:*' unstagedstr "  "
 zstyle ':vcs_info:*' formats "${DEL}${DEL}${reset_color}${PG}⮀ ${WG}  %c%u%b%f ${reset_color}${G_}⮀"
+>>>>>>> 94119d3e9a1aab108ef23e71eff211a287a984e5
 zstyle ':vcs_info:*' actionformats '[%b|%a]'
 setopt prompt_subst
 
