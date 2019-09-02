@@ -149,9 +149,11 @@ function iconfont () {
 case ${OSTYPE} in
     linux*)
         OSICON=""
+        TRI="⮀ "
         ;;
     darwin*)
         OSICON=""
+        TRI=" "
         ;;
     openbsd*)
         ;;
@@ -191,10 +193,10 @@ autoload -Uz vcs_info
 zstyle ':vcs_info:git:*' check-for-changes true
 zstyle ':vcs_info:git:*' stagedstr "  "
 zstyle ':vcs_info:git:*' unstagedstr "  "
-zstyle ':vcs_info:*' formats "${DEL}${DEL}${PG}⮀ ${WG}  %u%c%b%f ${RS}${G_}⮀"
-zstyle ':vcs_info:*' actionformats "${DEL}${DEL}${PG}⮀ ${WG}    %b|%a ${RS}${G_}⮀"
+zstyle ':vcs_info:*' formats "${DEL}${DEL}${PG}${TRI}${WG}  %u%c%b%f ${RS}${G_}${TRI}"
+zstyle ':vcs_info:*' actionformats "${DEL}${DEL}${PG}${TRI}${WG}    %b|%a ${RS}${G_}${TRI}"
  
-PROMPT='${WR}${OSICON}  %m ${RB}⮀ ${WB}  %~ ${BP}⮀ ${WP}  %n ${RS}${P_}⮀ '
+PROMPT='${WR}${OSICON}  %m ${RB}${TRI}${WB}  %~ ${BP}${TRI}${WP}  %n ${RS}${P_}${TRI}'
 PROMPT2="%{${W_}%}> ${RS}"
 SPROMPT="%{${W_}%}%r is correct? [n,y,a,e]:%{${reset_color}%} "
 
