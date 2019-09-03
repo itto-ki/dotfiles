@@ -303,7 +303,7 @@ let g:LanguageClient_autoStart = 1
 let g:LanguageClient_serverCommands = {
     \ 'rust': ['rustup', 'run', 'stable', 'rls'],
     \ 'python': ['pyls'],
-    \ 'go': ['go-langserver', '-gocodecompletion'],
+    \ 'go': ['gopls'],
     \ 'typescript': ['javascript-typescript-stdio'],
     \ 'c': ['clangd', '-backgroud-index'],
     \ 'dockerfile': ['docker-langserver --stdio'],
