@@ -194,7 +194,7 @@ zstyle ':vcs_info:git:*' check-for-changes true
 zstyle ':vcs_info:git:*' stagedstr "  "
 zstyle ':vcs_info:git:*' unstagedstr "  "
 zstyle ':vcs_info:*' formats "${DEL}${DEL}${PG}${TRI}${WG}  %u%c%b%f ${RS}${G_}${TRI}"
-zstyle ':vcs_info:*' actionformats "${DEL}${DEL}${PG}${TRI}${WG}    %b|%a ${RS}${G_}${TRI}"
+zstyle ':vcs_info:*' actionformats "${DEL}${DEL}${PG}${TRI}${WG}    %b ${RS}${G_}${TRI}"
  
 PROMPT='${WR}${OSICON}  %m ${RB}${TRI}${WB}  %~ ${BP}${TRI}${WP}  %n ${RS}${P_}${TRI}'
 PROMPT2="%{${W_}%}> ${RS}"
