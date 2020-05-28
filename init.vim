@@ -10,7 +10,7 @@ Plug 'Shougo/neoyank.vim'
 Plug 'Shougo/denite.nvim'
 Plug 'ryanoasis/vim-devicons'
 Plug 'tomasr/molokai'
-Plug 'dracula/vim'
+Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'cocopon/iceberg.vim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
@@ -90,7 +90,7 @@ nnoremap <S-Down>  <C-w>+<CR>
 " コメント色を37(ターコイズブルー)にする
 autocmd ColorScheme * highlight Comment ctermfg=37
 " カラースキーム
-colorscheme molokai
+colorscheme dracula
 syntax on
 " 背景を透明化
 highlight Normal ctermbg=none
