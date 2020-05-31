@@ -3,11 +3,15 @@
 " ################################################################################
 call plug#begin()
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'lighttiger2505/deoplete-vim-lsp'
 Plug 'Shougo/neosnippet-snippets'
 Plug 'Shougo/vimproc.vim'
 Plug 'Shougo/neomru.vim'
 Plug 'Shougo/neoyank.vim'
 Plug 'Shougo/denite.nvim'
+Plug 'prabirshrestha/async.vim'
+Plug 'prabirshrestha/vim-lsp'
+Plug 'mattn/vim-lsp-settings'
 Plug 'ryanoasis/vim-devicons'
 Plug 'tomasr/molokai'
 Plug 'dracula/vim', { 'as': 'dracula' }
@@ -17,10 +21,6 @@ Plug 'scrooloose/nerdtree'
 Plug 'itchyny/lightline.vim'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'scrooloose/syntastic'
-Plug 'autozimu/LanguageClient-neovim', {
-    \ 'branch': 'next',
-    \ 'do': 'bash install.sh',
-    \ }
 Plug 'Shougo/neosnippet'
 Plug 'Shougo/neosnippet-snippets'
 Plug 'fatih/vim-go', {
@@ -295,21 +295,6 @@ augroup END
 " ##########################################################################################
 "
 let g:deoplete#enable_at_startup = 1
-
-" ##########################################################################################
-" ### LanguageClient-neovimの設定
-" ##########################################################################################
-let g:LanguageClient_autoStart = 1
-" コード診断結果をリアルタイムするか否か
-" let g:LanguageClient_diagnosticsEnable = 0
-let g:LanguageClient_serverCommands = {
-    \ 'rust': ['rustup', 'run', 'stable', 'rls'],
-    \ 'python': ['pyls'],
-    \ 'go': ['gopls'],
-    \ 'typescript': ['javascript-typescript-stdio'],
-    \ 'c': ['clangd', '-backgroud-index'],
-    \ 'dockerfile': ['docker-langserver --stdio'],
-    \}
 
 " ##########################################################################################
 " ### deniteの設定
