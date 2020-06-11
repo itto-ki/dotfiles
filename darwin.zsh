@@ -5,7 +5,7 @@ export PATH=/usr/texbin:$HOME/.cargo/bin:$PATH
 export EDITOR=nvim
 export LANG=ja_JP.UTF-8
 export RUST_SRC_PATH=$HOME/.rustup/toolchains/stable-x86_64-apple-darwin/lib/rustlib/src/rust/src
-export PATH=$PATH:${GOPATH//://bin:}/bin
+# export PATH=$PATH:${GOPATH//://bin:}/bin
 export PATH=$HOME/google-cloud-sdk/bin:$PATH
 
 
@@ -19,6 +19,17 @@ if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init -)"
 fi
 # pipenv
-eval "$(pipenv --completion)"
 export PIPENV_VENV_IN_PROJECT=true
 
+
+############################################################################################
+### peco
+############################################################################################
+function peco-history-selection() {
+    BUFFER=`history -n 1 | tail -r  | awk '!a[$0]++' | peco`
+    CURSOR=$#BUFFER
+    zle reset-prompt
+}
+
+zle -N peco-history-selection
+bindkey '^R' peco-history-selection

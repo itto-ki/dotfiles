@@ -12,3 +12,5 @@
         br = branch
         ch = checkout
         gr = log --graph --oneline
+[commit]
+	template = /Users/itto-ki/dotfiles/commit_template
