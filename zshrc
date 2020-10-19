@@ -41,6 +41,7 @@ alias gosh='rlwrap gosh'
 alias ocaml='rlwrap ocaml'
 alias zshr='source $HOME/.zshrc'
 alias tree='tree -C'
+alias tf='terraform'
 # Git
 alias gad='git add'
 alias gcm='git commit'
