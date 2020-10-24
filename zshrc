@@ -216,3 +216,11 @@ eval "$(direnv hook zsh)"
 ### n
 #############################################################################################
 # export N_PREFIX=$HOME/.local
+
+
+#############################################################################################
+### terraform
+#############################################################################################
+# Auto Complete
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /usr/local/Cellar/tfenv/2.0.0/versions/0.13.4/terraform terraform
