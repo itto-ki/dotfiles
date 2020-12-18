@@ -40,6 +40,7 @@ alias gosh='rlwrap gosh'
 alias ocaml='rlwrap ocaml'
 alias zshr='source $HOME/.zshrc'
 alias tree='tree -C'
+alias tf='terraform'
 # Git
 alias gad='git add'
 alias gcm='git commit'
@@ -208,3 +209,17 @@ precmd () { vcs_info }
 ### direnv
 #############################################################################################
 eval "$(direnv hook zsh)"
+
+
+#############################################################################################
+### n
+#############################################################################################
+# export N_PREFIX=$HOME/.local
+
+
+#############################################################################################
+### terraform
+#############################################################################################
+# Auto Complete
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /usr/local/Cellar/tfenv/2.0.0/versions/0.13.4/terraform terraform

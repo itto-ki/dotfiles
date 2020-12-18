@@ -19,6 +19,17 @@ if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init -)"
 fi
 # pipenv
-eval "$(pipenv --completion)"
 export PIPENV_VENV_IN_PROJECT=true
 
+
+############################################################################################
+### peco
+############################################################################################
+function peco-history-selection() {
+    BUFFER=`history -n 1 | tail -r  | awk '!a[$0]++' | peco`
+    CURSOR=$#BUFFER
+    zle reset-prompt
+}
+
+zle -N peco-history-selection
+bindkey '^R' peco-history-selection
