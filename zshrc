@@ -237,3 +237,7 @@ eval "$(direnv hook zsh)"
 # Auto Complete
 autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /usr/local/Cellar/tfenv/2.0.0/versions/0.13.4/terraform terraform
+
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+
+source /Users/itto-ki/.config/broot/launcher/bash/br
