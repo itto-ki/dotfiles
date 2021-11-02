@@ -7,6 +7,7 @@ export LANG=ja_JP.UTF-8
 export RUST_SRC_PATH=$HOME/.rustup/toolchains/stable-x86_64-apple-darwin/lib/rustlib/src/rust/src
 export PATH=$PATH:${GOPATH//://bin:}/bin:$HOME/.local/bin
 export PATH=$HOME/google-cloud-sdk/bin:$PATH
+export PATH=/usr/local/opt/ruby/bin:$PATH
 
 
 ############################################################################################
