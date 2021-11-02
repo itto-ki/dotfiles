@@ -111,11 +111,11 @@ export ZLS_COLORS=$LS_COLORS
 #############################################################################################
 
 # File of saveing history
-HISTFILE=~/.zsh_history
+HISTFILE=$HOME/.zsh_history
 # Number of histories mapped a memory
-HISTSIZE=100
+HISTSIZE=10000
 # Number of historyies
-SAVEHIST=10000
+SAVEHIST=1000000
 # Don't save a same command
 setopt hist_ignore_dups 
 # Dont't save a hisotry command
@@ -126,6 +126,8 @@ setopt hist_reduce_blanks
 setopt inc_append_history
 # Save time of starting zsh and ending zsh
 setopt extended_history
+# Share
+setopt share_history
 
 
 #############################################################################################
@@ -206,18 +208,6 @@ PROMPT=${PROMPT}'${vcs_info_msg_0_}
 ${Y_}  ${RS}'
 setopt prompt_subst
 precmd () { vcs_info }
-
-#############################################################################################
-### peco
-#############################################################################################
-function peco-history-selection() {
-    BUFFER=`history -n 1 | tac  | awk '!a[$0]++' | peco`
-    CURSOR=$#BUFFER
-    zle reset-prompt
-}
-
-zle -N peco-history-selection
-bindkey '^R' peco-history-selection
 
 #############################################################################################
 ### direnv
