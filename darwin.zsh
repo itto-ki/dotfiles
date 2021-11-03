@@ -11,19 +11,6 @@ export PATH=/usr/local/opt/ruby/bin:$PATH
 
 
 ############################################################################################
-### Pyenv & Pipenv
-############################################################################################
-# Pyenv
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-if command -v pyenv 1>/dev/null 2>&1; then
-  eval "$(pyenv init --path)"
-fi
-# pipenv
-export PIPENV_VENV_IN_PROJECT=true
-
-
-############################################################################################
 ### peco
 ############################################################################################
 function peco-history-selection() {
@@ -36,8 +23,20 @@ zle -N peco-history-selection
 bindkey '^R' peco-history-selection
 
 
+############################################################################################
+### Pyenv & Pipenv
+############################################################################################
+# Pyenv
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(pyenv init --path)"
+fi
+# pipenv
+export PIPENV_VENV_IN_PROJECT=true
+
+
 #############################################################################################
 ### gcloud
 #############################################################################################
 if [ -f '/Users/itto-ki/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/itto-ki/Downloads/google-cloud-sdk/path.zsh.inc'; fi
-

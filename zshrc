@@ -1,67 +1,4 @@
 ############################################################################################
-### OS Type setting
-############################################################################################
-case ${OSTYPE} in
-    linux*)
-        source $HOME/dotfiles/linux.zsh
-        ;;
-    openbsd*)
-        source $HOME/dotfiles/openbsd.zsh
-        ;;
-    darwin*)
-        source $HOME/dotfiles/darwin.zsh
-        ;;
-esac
-
-
-############################################################################################
-### specific settings for this machine
-############################################################################################
-if [ -e $HOME/.special.zsh ]; then
-    source $HOME/.special.zsh
-fi
-
-############################################################################################
-### Environmental variables
-############################################################################################
-
-export LESS='-R'
-# settings for n (n is manager of Node.js versions)
-export N_PREFIX=$HOME/.local
-
-############################################################################################
-### Alias
-############################################################################################
-
-alias la='ls -a'
-alias ll='ls -l'
-alias tmux='tmux -2'
-alias ag='ag --color'
-alias vndl='virsh net-dhcp-leases'
-alias gosh='rlwrap gosh'
-alias ocaml='rlwrap ocaml'
-alias zshr='source $HOME/.zshrc'
-alias tree='tree -C'
-alias tf='terraform'
-# Git
-alias gad='git add'
-alias gcm='git commit'
-alias gbr='git branch'
-alias gch='git checkout'
-alias glg='git log'
-alias ggr='git log --graph --oneline'
-
-
-
-############################################################################################
-### Language
-############################################################################################
-
-# Set character code using `less` command
-export LESSCHARSET=UTF-8
-
-
-############################################################################################
 ### Shell General Setting
 ############################################################################################
 # Remove duplicate PATH
@@ -91,10 +28,70 @@ zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 export CLICOLOR=true
 
 
+############################################################################################
+### OS Type setting
+############################################################################################
+case ${OSTYPE} in
+    linux*)
+        source $HOME/dotfiles/linux.zsh
+        ;;
+    openbsd*)
+        source $HOME/dotfiles/openbsd.zsh
+        ;;
+    darwin*)
+        source $HOME/dotfiles/darwin.zsh
+        ;;
+esac
+
+
+############################################################################################
+### specific settings for this machine
+############################################################################################
+if [ -e $HOME/.special.zsh ]; then
+    source $HOME/.special.zsh
+fi
+
+
+############################################################################################
+### Environmental variables
+############################################################################################
+
+export LESS='-R'
+# settings for n (n is manager of Node.js versions)
+export N_PREFIX=$HOME/.local
+
+
+############################################################################################
+### Alias
+############################################################################################
+alias la='ls -a'
+alias ll='ls -l'
+alias tmux='tmux -2'
+alias ag='ag --color'
+alias vndl='virsh net-dhcp-leases'
+alias gosh='rlwrap gosh'
+alias ocaml='rlwrap ocaml'
+alias zshr='source $HOME/.zshrc'
+alias tree='tree -C'
+alias tf='terraform'
+# Git
+alias gad='git add'
+alias gcm='git commit'
+alias gbr='git branch'
+alias gch='git checkout'
+alias glg='git log'
+alias ggr='git log --graph --oneline'
+
+############################################################################################
+### Language
+############################################################################################
+# Set character code using `less` command
+export LESSCHARSET=UTF-8
+
+
 #############################################################################################
 ### Complement
 #############################################################################################
-
 autoload -U compinit; compinit -u         # Enabled auto completion
 setopt auto_list                          # Show the list of completion choices
 setopt auto_menu                          # Select choices with pushing TAB
@@ -109,7 +106,6 @@ export ZLS_COLORS=$LS_COLORS
 #############################################################################################
 ### History
 #############################################################################################
-
 # File of saveing history
 HISTFILE=$HOME/.zsh_history
 # Number of histories mapped a memory
@@ -231,3 +227,4 @@ complete -o nospace -C /usr/local/Cellar/tfenv/2.0.0/versions/0.13.4/terraform t
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
 source /Users/itto-ki/.config/broot/launcher/bash/br
+
