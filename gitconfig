@@ -1,6 +1,6 @@
 [user]
 	email = kimura.itto.kd3@gmail.com
-	name = Ittoh Kimura
+	name = Itto Kimura
 [push]
 	default = current
 [core]
@@ -17,7 +17,7 @@
         ch = checkout
         gr = log --graph --oneline
 [commit]
-	template = /Users/itto-ki/dotfiles/commit_template
+	template = /Users/itto.kimura/dotfiles/commit_template
 [secrets]
         providers = git secrets --aws-provider
         patterns = (A3T[A-Z0-9]|AKIA|AGPA|AIDA|AROA|AIPA|ANPA|ANVA|ASIA)[A-Z0-9]{16}
@@ -27,7 +27,7 @@
 	allowed = wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
 [init]
         templatedir = ~/.git-templates/git-secrets
-	defaultBranch = main
+	defaultBranch = ""
 
 [interactive]
     diffFilter = delta --color-only
