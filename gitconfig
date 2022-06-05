@@ -16,8 +16,11 @@
         br = branch
         ch = checkout
         gr = log --graph --oneline
+        st = status
+        cm = commit
+        df = diff
 [commit]
-	template = /Users/itto.kimura/dotfiles/commit_template
+	template = ~/dotfiles/commit_template
 [secrets]
         providers = git secrets --aws-provider
         patterns = (A3T[A-Z0-9]|AKIA|AGPA|AIDA|AROA|AIPA|ANPA|ANVA|ASIA)[A-Z0-9]{16}
@@ -26,8 +29,8 @@
         allowed = AKIAIOSFODNN7EXAMPLE
 	allowed = wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
 [init]
-        templatedir = ~/.git-templates/git-secrets
-	defaultBranch = ""
+	templateDir = /Users/itto-ki/.git-templates/git-secrets
+	defaultBranch = "main"
 
 [interactive]
     diffFilter = delta --color-only
