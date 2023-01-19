@@ -242,3 +242,17 @@ source $HOME/.config/broot/launcher/bash/br
  }
  zle -N peco-select-history
  bindkey '^R' peco-select-history
+
+############################################################################################↲
+ ### asdf
+ ############################################################################################↲
+. /opt/homebrew/opt/asdf/libexec/asdf.sh
+
+############################################################################################↲
+ ### tmuxinator
+ ############################################################################################↲
+alias mux=tmuxinator
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
