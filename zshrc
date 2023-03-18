@@ -232,17 +232,6 @@ alias awsp="source _awsp"
 #############################################################################################
 source $HOME/.config/broot/launcher/bash/br
 
-############################################################################################↲
-### peco
-############################################################################################↲
-function peco-select-history() {
-    BUFFER="$(history -nr 1 | awk '!a[$0]++' | peco --query "$LBUFFER" | sed 's/\\n/\n/')"
-    CURSOR=$#BUFFER
-    zle -R -c
-}
-zle -N peco-select-history
-bindkey '^R' peco-select-history
-
 
 ############################################################################################↲
 ### flutter
@@ -250,4 +239,26 @@ bindkey '^R' peco-select-history
 export PATH="$PATH":"$HOME/.pub-cache/bin"
 
 
+ ### peco
+ ############################################################################################↲
+ function peco-select-history() {
+     BUFFER="$(history -nr 1 | awk '!a[$0]++' | peco --query "$LBUFFER" | sed 's/\\n/\n/')"
+     CURSOR=$#BUFFER
+     zle -R -c
+ }
+ zle -N peco-select-history
+ bindkey '^R' peco-select-history
+
+############################################################################################↲
+ ### asdf
+ ############################################################################################↲
 . /opt/homebrew/opt/asdf/libexec/asdf.sh
+
+############################################################################################↲
+ ### tmuxinator
+ ############################################################################################↲
+alias mux=tmuxinator
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"

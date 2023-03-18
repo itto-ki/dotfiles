@@ -14,3 +14,12 @@ export PATH=/usr/local/opt/ruby/bin:$PATH
 ### gcloud
 #############################################################################################
 if [ -f '/Users/itto-ki/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/itto-ki/Downloads/google-cloud-sdk/path.zsh.inc'; fi
+
+
+#############################################################################################
+### Golang
+#############################################################################################
+export GOENV_ROOT="$HOME/.goenv"
+export PATH="$GOENV_ROOT/bin:$PATH"
+eval "$(goenv init -)"
+export PATH="/opt/homebrew/opt/mysql-client/bin:$PATH"

@@ -29,7 +29,7 @@
         allowed = AKIAIOSFODNN7EXAMPLE
 	allowed = wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
 [init]
-	templateDir = /Users/itto-ki/.git-templates/git-secrets
+        templatedir = ~/.git-templates/git-secrets
 	defaultBranch = "main"
 
 [interactive]
