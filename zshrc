@@ -233,12 +233,21 @@ alias awsp="source _awsp"
 source $HOME/.config/broot/launcher/bash/br
 
 ############################################################################################↲
- ### peco
- ############################################################################################↲
- function peco-select-history() {
-     BUFFER="$(history -nr 1 | awk '!a[$0]++' | peco --query "$LBUFFER" | sed 's/\\n/\n/')"
-     CURSOR=$#BUFFER
-     zle -R -c
- }
- zle -N peco-select-history
- bindkey '^R' peco-select-history
+### peco
+############################################################################################↲
+function peco-select-history() {
+    BUFFER="$(history -nr 1 | awk '!a[$0]++' | peco --query "$LBUFFER" | sed 's/\\n/\n/')"
+    CURSOR=$#BUFFER
+    zle -R -c
+}
+zle -N peco-select-history
+bindkey '^R' peco-select-history
+
+
+############################################################################################↲
+### flutter
+############################################################################################↲
+export PATH="$PATH":"$HOME/.pub-cache/bin"
+
+
+. /opt/homebrew/opt/asdf/libexec/asdf.sh
