@@ -278,8 +278,8 @@ nnoremap + <C-a>
 nnoremap - <C-x>
 
 " システム標準pythonへのパスを追記
-let g:python_host_prog = $PYENV_ROOT . '/shims/python'
-let g:python3_host_prog = $PYENV_ROOT . '/shims/python3'
+let g:python_host_prog = $HOME . '/.asdf/shims/python'
+let g:python3_host_prog = $HOME . '/.asdf/shims/python3'
 
 " ファイルを閉じる時にQuickFixウインドウしか残らないのであればQuickFixウインドウを自動クローズ
 augroup QfAutoCommands
