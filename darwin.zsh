@@ -8,6 +8,7 @@ export RUST_SRC_PATH=$HOME/.rustup/toolchains/stable-x86_64-apple-darwin/lib/rus
 export PATH=$PATH:${GOPATH//://bin:}/bin:$HOME/.local/bin
 export PATH=$HOME/google-cloud-sdk/bin:$PATH
 export PATH=/usr/local/opt/ruby/bin:$PATH
+export PATH="/opt/homebrew/opt/mysql-client/bin:$PATH"
 
 
 #############################################################################################
