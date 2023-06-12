@@ -8,6 +8,7 @@ export RUST_SRC_PATH=$HOME/.rustup/toolchains/stable-x86_64-apple-darwin/lib/rus
 export PATH=$PATH:${GOPATH//://bin:}/bin:$HOME/.local/bin
 export PATH=$HOME/google-cloud-sdk/bin:$PATH
 export PATH=/usr/local/opt/ruby/bin:$PATH
+export PATH="/opt/homebrew/opt/mysql-client/bin:$PATH"
 export PATH=$HOME/.fig/bin:$PATH
 
 
@@ -20,7 +21,4 @@ if [ -f '/Users/itto-ki/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Use
 #############################################################################################
 ### Golang
 #############################################################################################
-export GOENV_ROOT="$HOME/.goenv"
-export PATH="$GOENV_ROOT/bin:$PATH"
-eval "$(goenv init -)"
-export PATH="/opt/homebrew/opt/mysql-client/bin:$PATH"
+export PATH="$(go env GOPATH)/bin:$PATH"
