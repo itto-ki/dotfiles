@@ -1,5 +1,5 @@
-# Fig pre block. Keep at the top of this file.
-[[ -f "$HOME/.fig/shell/zshrc.pre.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.pre.zsh"
+# Q pre block. Keep at the top of this file.
+[[ -f "${HOME}/Library/Application Support/amazon-q/shell/zshrc.pre.zsh" ]] && builtin source "${HOME}/Library/Application Support/amazon-q/shell/zshrc.pre.zsh"
 ############################################################################################
 ### Shell General Setting
 ############################################################################################
@@ -224,12 +224,6 @@ export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
 
 #############################################################################################
-### AWS
-#############################################################################################
-alias awsp="source _awsp"
-
-
-#############################################################################################
 ### broot
 #############################################################################################
 source $HOME/.config/broot/launcher/bash/br
@@ -240,7 +234,14 @@ source $HOME/.config/broot/launcher/bash/br
 ############################################################################################↲
 export PATH="$PATH":"$HOME/.pub-cache/bin"
 
+############################################################################################↲
+### Golang
+############################################################################################↲
+export GOPATH=$HOME/go
+export PATH=$PATH:$GOPATH/bin
 
+
+ ############################################################################################↲
  ### peco
  ############################################################################################↲
  function peco-select-history() {
@@ -261,9 +262,20 @@ export PATH="$PATH":"$HOME/.pub-cache/bin"
  ############################################################################################↲
 alias mux=tmuxinator
 
+############################################################################################↲
+ ### sdkman
+ ############################################################################################↲
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 
-# Fig post block. Keep at the bottom of this file.
-[[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.post.zsh"
+############################################################################################↲
+ ### Amazon Q
+ ############################################################################################↲
+# Q post block. Keep at the bottom of this file.
+[[ -f "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh" ]] && builtin source "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh"
+
+
+
+# Added by Windsurf
+export PATH="/Users/itto-ki/.codeium/windsurf/bin:$PATH"

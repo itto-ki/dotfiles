@@ -1,6 +1,7 @@
 [user]
 	email = kimura.itto.kd3@gmail.com
 	name = Itto Kimura
+	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIA15HIZxT82PmLr3E4DbwNa8hb89uKnwXjTste9fTHqr
 [push]
 	default = current
 [core]
@@ -21,6 +22,7 @@
         df = diff
 [commit]
 	template = ~/dotfiles/commit_template
+	gpgsign = true
 [secrets]
         providers = git secrets --aws-provider
         patterns = (A3T[A-Z0-9]|AKIA|AGPA|AIDA|AROA|AIPA|ANPA|ANVA|ASIA)[A-Z0-9]{16}
@@ -43,3 +45,7 @@
     commit-decoration-style = bold yellow box ul
     file-style = bold yellow ul
     file-decoration-style = none
+[gpg]
+	format = ssh
+[gpg "ssh"]
+	program = /Applications/1Password.app/Contents/MacOS/op-ssh-sign
