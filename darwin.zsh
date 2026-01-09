@@ -14,11 +14,10 @@ export PATH=/Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin:$P
 
 
 #############################################################################################
-### Golang
+### Deno
 #############################################################################################
-export GOPATH=`go env GOPATH`
-export GOROOT=`go env GOROOT`
-export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
+export PATH=$HOME/.deno/bin:$PATH
+. "$HOME/.deno/env"
 
 
 #############################################################################################
