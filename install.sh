@@ -42,6 +42,15 @@ if [ ! -e $TPMDIR ]; then
     git clone https://github.com/tmux-plugins/tpm $TPMDIR
 fi
 
+# Ghosttyの設定ファイルを作成
+GHOSTTY_CONFIG_DIR=$HOME/.config/ghostty
+if [ ! -e $GHOSTTY_CONFIG_DIR ]; then
+    mkdir -p $GHOSTTY_CONFIG_DIR
+fi
+if [ ! -e $GHOSTTY_CONFIG_DIR/config ]; then
+    ln -s $SCRIPT_DIR/ghostty-config $GHOSTTY_CONFIG_DIR/config
+fi
+
 # neovim以外の設定ファイルを作成
 for file in ${CONFIGFIELS[@]}; do
     ln -s $SCRIPT_DIR/$file $HOME/.$file
