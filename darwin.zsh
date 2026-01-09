@@ -25,3 +25,13 @@ export PATH=$HOME/.deno/bin:$PATH
 #############################################################################################
 if [ -f '/Users/itto-ki/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/itto-ki/Downloads/google-cloud-sdk/path.zsh.inc'; fi
 export PATH=$HOME/google-cloud-sdk/bin:$PATH
+
+#############################################################################################
+### Amazon Q
+#############################################################################################
+[[ -f "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh" ]] && builtin source "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh"
+
+#############################################################################################
+### LM Studio
+#############################################################################################
+export PATH="$PATH:/Users/itto-ki/.lmstudio/bin"

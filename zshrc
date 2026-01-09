@@ -259,7 +259,6 @@ alias mux=tmuxinator
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 
 ############################################################################################
-### Amazon Q
+### Antigravity
 ############################################################################################
-# Q post block. Keep at the bottom of this file.
-[[ -f "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh" ]] && builtin source "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh"
+export PATH="/Users/itto-ki/.antigravity/antigravity/bin:$PATH"
