@@ -1,0 +1,8 @@
+theme = Dracula
+
+font-family = BlexMono Nerd Font Mono
+font-feature = -dlig
+font-size = 15
+
+background-blur-radius = 10
+background-opacity = 0.7
