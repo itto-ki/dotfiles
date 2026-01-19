@@ -8,7 +8,6 @@ export RUST_SRC_PATH=$HOME/.rustup/toolchains/stable-x86_64-apple-darwin/lib/rus
 export PATH=$PATH:${GOPATH//://bin:}/bin:$HOME/.local/bin
 export PATH=/usr/local/opt/ruby/bin:$PATH
 export PATH="/opt/homebrew/opt/mysql-client/bin:$PATH"
-export PATH=$HOME/.fig/bin:$PATH
 export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
 export PATH=/Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin:$PATH
 
