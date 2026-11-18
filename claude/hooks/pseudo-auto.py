@@ -6,6 +6,7 @@ Claude Code の管理設定・deny/ask ルールは、このフックの allow �
 
 ほかに次の決まりを強制する。
 - claude-chrome は単独の 1 行で、$(...) を入れず短い引数で呼ぶ（2 つ目のデーモンが立って止まるため）
+- claude-run は単独の 1 行で呼ぶ（ほかのコマンドとつなぐと sandbox の中で動いて失敗するため）
 - プロジェクトの自動メモリに環境の話を書かない（~/dotfiles/claude/rules/environment.md に書く）
 - T3 Code では Agent をフォアグラウンドで動かす（バックグラウンドだとターン終了後のツール呼び出しが失敗する）
 """
@@ -31,6 +32,7 @@ HEREDOC = re.compile(r"(?<!<)<<(-?)[ \t]*(?:(['\"])([A-Za-z_][A-Za-z0-9_]*)\2|([
 PUNCTUATION = ";&|()\n"
 
 CHROME = "claude-chrome"
+CLAUDE_RUN = "claude-run"
 CHROME_MAX_LENGTH = 500
 MEMORY_FILE = re.compile(r"/\.claude/projects/[^/]+/memory/(?!MEMORY\.md$)[^/]+\.md$")
 ENVIRONMENT_WORDS = re.compile(
@@ -237,23 +239,43 @@ def shell_reason(command, depth=0, blocked_commands=BLOCKED_COMMANDS):
     return None
 
 
-def claude_chrome_reason(command):
-    """claude-chrome の呼び出しが、止まらない形かどうかを調べる。"""
-    if CHROME not in command:
+def called_alone(command, name):
+    """name のコマンドを呼んでいなければ None、単独の 1 行で呼んでいれば True、ほかとつないでいれば False。
+
+    ヒアドキュメントの本文（python3 - <<EOF の中のコードなど）はコマンドとして数えない。
+    """
+    if name not in command:
         return None
-    _, segments = split_segments(command)
+    outer, heredocs = separate_heredocs(command)
+    _, segments = split_segments(outer)
     if not segments:
         return None
-    calls = [words for words in segments if (stripped := strip_prefix(words)) and os.path.basename(stripped[0]) == CHROME]
-    if not calls:
+    if not any((stripped := strip_prefix(words)) and os.path.basename(stripped[0]) == name for words in segments):
         return None
-    if len(segments) > 1:
-        return ("claude-chrome はほかのコマンドとつながず、単独の Bash 呼び出しにする"
+    return len(segments) == 1 and not heredocs and "\n" not in outer.strip()
+
+
+def claude_chrome_reason(command):
+    """claude-chrome の呼び出しが、止まらない形かどうかを調べる。"""
+    alone = called_alone(command, CHROME)
+    if alone is None:
+        return None
+    if not alone:
+        return ("claude-chrome はほかのコマンドとつながず、単独の 1 行の Bash 呼び出しにする"
                 "（つなぐと 2 つ目のデーモンが立って止まる）。前後の処理と結果の確認は別の呼び出しで行う")
     text = command.strip()
     if "\n" in text or "$(" in text or "`" in text or len(text) > CHROME_MAX_LENGTH:
         return (f"claude-chrome には複数行・$(...)・{CHROME_MAX_LENGTH} 字を超える引数を渡さない（2 つ目のデーモンが立って止まる）。"
                 "長い JS は evaluate_script --pageId <id> --sourcePath <js のパス>、結果は --filePath <json> で受け取る")
+    return None
+
+
+def claude_run_reason(command):
+    """claude-run の呼び出しが、sandbox の外で動く形（単独の 1 行）かどうかを調べる。"""
+    if called_alone(command, CLAUDE_RUN) is False:
+        return ("claude-run は Bash 呼び出しの唯一のコマンドにし、1 行で渡す（ほかのコマンドとつなぐと sandbox の中で動いて失敗する）。"
+                "下準備と結果の確認は別の Bash 呼び出しで行い、長い文やメッセージはファイルに書いてから渡す。"
+                "claude-run に渡す引数の中では && でつないでよい")
     return None
 
 
@@ -299,7 +321,7 @@ def main():
             if reason:
                 decide("ask", "rm requires manual approval")
                 return
-            reason = claude_chrome_reason(command)
+            reason = claude_chrome_reason(command) or claude_run_reason(command)
             if reason:
                 decide("deny", reason)
                 return

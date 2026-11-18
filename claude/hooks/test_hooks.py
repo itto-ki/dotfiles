@@ -53,6 +53,19 @@ class PseudoAuto(unittest.TestCase):
         self.assertEqual(bash("claude-chrome fill 1 2 'a\nb'"), "deny")
         self.assertEqual(bash("claude-chrome fill 1 2 '" + "あ" * 600 + "'"), "deny")
 
+    def test_claude_run_alone_is_allowed(self):
+        self.assertEqual(bash("~/.local/bin/claude-run --cwd /x 'git add -A && git commit -q -F /tmp/m.txt'"), "allow")
+        self.assertEqual(bash("/Users/jrw_37/.local/bin/claude-run --cwd /x './scripts/build-app.sh > /tmp/b.log 2>&1'"), "allow")
+        self.assertEqual(bash("grep -n claude-run notes.md"), "allow")
+        self.assertEqual(bash("cd /x && python3 - <<'EOF'\nif 'claude-run' in line:\n    claude-chrome = 1\nEOF"), "allow")
+
+    def test_claude_run_bad_shapes_are_denied(self):
+        self.assertEqual(bash("printf x > /tmp/m.txt; ~/.local/bin/claude-run --cwd /x 'git commit -F /tmp/m.txt'"), "deny")
+        self.assertEqual(bash("cd /x && ~/.local/bin/claude-run 'make'"), "deny")
+        self.assertEqual(bash("~/.local/bin/claude-run --cwd /x 'make' | tail -3"), "deny")
+        self.assertEqual(bash("~/.local/bin/claude-run --cwd /x 'git status\ngit log'"), "deny")
+        self.assertEqual(bash("~/.local/bin/claude-run --cwd /x 'bash -s' <<'EOF'\ngit status\nEOF"), "deny")
+
     def test_agent_runs_in_foreground_in_t3(self):
         output = pre("Agent", {"prompt": "x", "run_in_background": True}, CLAUDE_CODE_ENTRYPOINT="t3-code")
         self.assertEqual(output["permissionDecision"], "allow")
