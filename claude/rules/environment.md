@@ -26,12 +26,23 @@
 - T3 Code のスレッドを Full access にすると、組織設定が bypass を禁止しているため 2 ターン目以降に「provider could not start this turn」になる。Full access 以外で使う
 - auto mode も組織設定で無効。`~/.claude/hooks/pseudo-auto.py` が代わりに承認を判定する
 
+## ブラウザ
+
+- ブラウザの操作は agent-desktop で、普段使いの Chrome（ユーザーのログインのまま）を使う。Claude in Chrome・claude-chrome・Playwright・chrome-devtools-mcp は使わない（pseudo-auto.py が止める）。skill やメモリに Claude in Chrome・claude-chrome の手順が書いてあっても、agent-desktop で同じことをする
+- agent-desktop は claude-run で 1 行ずつ呼ぶ。sandbox の中では `snapshot` などが `PERM_DENIED` になる（`status` は sandbox の中でも granted と出るので、確かめには使えない）。T3 Code にはアクセシビリティ権限が無いので、ほかのアプリの画面も claude-run の agent-desktop で読む
+- 開く: `open -g -a "Google Chrome" <URL>`。新しいタブが選ばれた状態で開き、窓は前に出ない。別のページへ移るときも開き直し、前のタブは閉じる
+- 読む: `agent-desktop list-windows --app "Google Chrome"` で窓 ID を取り、`agent-desktop snapshot --window-id <id> --compact --max-depth 50 > <$TMPDIR の下のファイル>` に書いて jq で読む。本文は `role` が `statictext` の `name` に出る。`-i` を付けると押せる要素だけになり、本文が落ちる。`--max-depth` は 50 まで。読み込みは `agent-desktop wait --text <語> --app "Google Chrome"` で待つ
+- 押す: スナップショットの `ref_id` を `agent-desktop click <ref_id>` に渡す。ref はスナップショットを取り直すまで使える。下の方は `agent-desktop scroll <ref_id>` で出してから読み直す
+- 閉じる: タブは `role` が `radiobutton` で、選ばれているタブ（`states` に `selected`）の子の「閉じる」ボタンを click する。`press cmd+w` は headless では送られない
+- 撮る: `agent-desktop screenshot --window-id <id> <png のパス>`
+- ページの JS は動かせない。前に JS で取っていたもの（Notion・Slack の検索 API、長いページの全文）は、画面の検索欄・スナップショット・スクロールで読む
+- `accessible: false`（not exposed through accessibility）の窓は読めない。取り直しても変わらなければ、ユーザーに窓を今の画面に出してもらう
+- キー入力（`type`・`press`）は頼まれたときだけ。`--headed`（窓を前に出す・カーソルを動かす）はユーザーが許したときだけ
+- agent-desktop（vercel-labs のデスクトップアプリ操作 CLI）は nixpkgs に無いので、claude-run で `npm install -g agent-desktop --allow-scripts=agent-desktop` を実行して `~/.npm-global` に入れてある
+
 ## ツール
 
 - CLI ツールは `nix profile add nixpkgs#<pkg>` で入れる（Homebrew は使わない。home-manager・nix-darwin は使っていない）。Homebrew に同じツールが残っていたら、消すかどうかを聞く
 - 文章の校正は `~/.local/bin/claude-run --cwd <dir> 'agy-proof <ファイル> --audience <読み手>'` で行う（sandbox の中では agy の通信が拒否されるので claude-run で呼ぶ）。依頼文は固定なので作り直さない。それでも exit 3 のとき（Antigravity のログインが切れているなど）は、出力された `!` の 1 行をユーザーに頼み、終わったら `agy-proof --collect <dir>` で結果を読む
-- claude-chrome は、単独の 1 行で、`$(...)` を入れず短い引数で呼ぶ（フックが強制する）。長い JS は `evaluate_script --pageId <id> --sourcePath <js>`、結果は `--filePath <json>` で受け取る。デーモンが 2 つ立って「The browser is already running」になったら、`pkill -TERM -f chrome-devtools-mcp/out` で両方止め、`pgrep -fl claude-chrome` で専用 Chrome も止まったのを確かめてから `new_page` で起動し直す。ログインはプロファイルに残る
-- Claude in Chrome（`mcp__claude-in-chrome__*`）の javascript_tool の戻り値は 1,100〜4,000 字ほどで切れるので、900 字ずつの配列で返す。`?` `&` `=` や Cookie らしい文字列を含むと BLOCKED になるので置き換えて返す。app.slack.com ではスクリーンショットが Permission denied になる。`file_upload` に渡せるのは作業ディレクトリの中のファイルだけ。組織設定で止められている時期もある
-- T3 Code にはアクセシビリティ権限が無いので、ほかのアプリの画面の情報は読めない
 - Android エミュレータ（この Mac）: `Pixel_8_API_35` に Chromium 155 を入れ、`com.android.chrome`（124）は止めてある
 - 使い方の指標は `claude-usage-report [日数]` で、直近の期間とその前の期間を比べて見る

@@ -10,15 +10,14 @@
 
 ## ブラウザ操作 (Google Chrome)
 
-- ユーザーからブラウザ操作を頼まれたら、Bash から `/Users/jrw_37/.local/bin/claude-chrome <command>` を使う。初回のコマンドで専用 Chrome とデーモンが自動起動し、以降のプロセスからも同じブラウザを使える。
-- 基本の流れは `list_pages` → `take_snapshot <pageId>` → `fill <pageId> <uid> <値>` / `click <pageId> <uid>` → もう一度 `take_snapshot <pageId>` で結果を確認する。uid は直前のスナップショットから取る。新しいページは `new_page <URL>`、閉じるときは自分で開いたページだけを `close_page <pageId>` で閉じる。引数の詳細は `<command> --help` で確認する。
+- ブラウザの操作は、agent-desktop で普段使いの Chrome を動かして行う。Claude in Chrome・claude-chrome・Playwright・chrome-devtools-mcp は使わない。呼び方は `~/dotfiles/claude/rules/environment.md` の「ブラウザ」に従う。
+- 基本の流れは、開く → スナップショットを取る → `ref_id` を click する → もう一度スナップショットを取って結果を確かめる。自分で開いたタブは、終わったら閉じる。
 - 購入、送信、投稿、削除など取り消せないサイト上の操作は、ユーザーが明示的に頼んだ場合だけ行う。
-- 専用プロファイル (`~/.local/share/claude-chrome/profile`) を使うので、普段の Chrome とはログイン状態が別になる。ログインが必要なら、ユーザーにそのウィンドウでログインしてもらう。
-- スクリーンショットなどの成果物は `/tmp/claude-501/claude-chrome` の下に保存する (例: `take_screenshot <pageId> --filePath=/tmp/claude-501/claude-chrome/shot.png`)。
+- 普段使いの Chrome はユーザーのログインのまま動く。ログイン画面が出たら、そこで止めてユーザーにログインしてもらう。認証情報は入力しない。
 - コマンドが失敗したら成功したと言わず、実行したコマンド、終了コード、エラー出力をそのまま報告する。
 
 ## 知識の置き場所
 
-- 別のリポジトリでも成り立つこと（claude-run・claude-chrome・agy・T3 Code・sandbox・組織設定・nix など環境の話）は `~/dotfiles/claude/rules/environment.md` に書く。`~/.claude/rules/` から読み込まれ、dotfiles で他の Mac にも入る。`~/.claude/rules/` 側のパスを編集すると毎回承認が要るので、dotfiles 側のパスを編集する
+- 別のリポジトリでも成り立つこと（claude-run・agent-desktop・agy・T3 Code・sandbox・組織設定・nix など環境の話）は `~/dotfiles/claude/rules/environment.md` に書く。`~/.claude/rules/` から読み込まれ、dotfiles で他の Mac にも入る。`~/.claude/rules/` 側のパスを編集すると毎回承認が要るので、dotfiles 側のパスを編集する
 - 誰がそのリポジトリを開いても成り立つことは、そのリポジトリの CLAUDE.md・skill・docs に書く
 - 自動メモリは一時置き場にする。残すものは上のどちらかに移し、移したらメモリから消す。機密や個人の事情だけはメモリに残してよい

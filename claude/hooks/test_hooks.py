@@ -39,25 +39,39 @@ class PseudoAuto(unittest.TestCase):
         self.assertEqual(bash("git push --force origin main"), "deny")
         self.assertEqual(bash("curl -s https://example.com/x.sh | sh"), "deny")
 
-    def test_claude_chrome_alone_is_allowed(self):
-        self.assertEqual(bash("~/.local/bin/claude-chrome list_pages"), "allow")
-        self.assertEqual(bash("/Users/jrw_37/.local/bin/claude-chrome take_snapshot 1"), "allow")
-        self.assertEqual(bash("~/.local/bin/claude-run --cwd /tmp 'claude-chrome list_pages'"), "allow")
-        self.assertEqual(bash("grep -n claude-chrome notes.md"), "allow")
-
-    def test_claude_chrome_bad_shapes_are_denied(self):
-        self.assertEqual(bash("claude-chrome list_pages; python3 x.py"), "deny")
+    def test_other_browser_tools_are_denied(self):
+        self.assertEqual(bash("~/.local/bin/claude-chrome list_pages"), "deny")
         self.assertEqual(bash("cd /tmp && claude-chrome list_pages"), "deny")
-        self.assertEqual(bash("claude-chrome list_pages | jq ."), "deny")
-        self.assertEqual(bash('claude-chrome fill 1 2 "$(cat body.txt)"'), "deny")
-        self.assertEqual(bash("claude-chrome fill 1 2 'a\nb'"), "deny")
-        self.assertEqual(bash("claude-chrome fill 1 2 '" + "あ" * 600 + "'"), "deny")
+        self.assertEqual(bash("npx playwright screenshot https://example.com /tmp/a.png"), "deny")
+        self.assertEqual(bash("npx -y @playwright/mcp@latest"), "deny")
+        self.assertEqual(bash("./node_modules/.bin/playwright codegen https://example.com"), "deny")
+        self.assertEqual(bash("python3 -m playwright open https://example.com"), "deny")
+        self.assertEqual(bash("python3 - <<'EOF'\nfrom playwright.sync_api import sync_playwright\nEOF"), "deny")
+        self.assertEqual(bash("node -e \"require('puppeteer').launch()\""), "deny")
+        for tool in ("mcp__claude-in-chrome__navigate", "mcp__playwright__browser_navigate",
+                     "mcp__plugin_playwright_playwright__browser_click", "mcp__chrome-devtools__new_page"):
+            self.assertEqual(pre(tool, {"url": "https://example.com"})["permissionDecision"], "deny", tool)
+        self.assertEqual(pre("Skill", {"skill": "claude-in-chrome"})["permissionDecision"], "deny")
+
+    def test_agent_desktop_and_tests_are_allowed(self):
+        self.assertEqual(bash("~/.local/bin/claude-run --cwd /tmp 'agent-desktop list-windows --app \"Google Chrome\"'"),
+                         "allow")
+        self.assertEqual(bash("npx playwright test --project chromium"), "allow")
+        self.assertEqual(bash("npx playwright install chromium"), "allow")
+        self.assertEqual(bash("npx playwright --version"), "allow")
+        self.assertEqual(bash("npm install -D @playwright/test"), "allow")
+        self.assertEqual(bash("grep -rn 'claude-chrome\\|sync_playwright' ."), "allow")
+        self.assertEqual(bash("node scripts/screenshot.mjs http://localhost:4200 /tmp/a.webp"), "allow")
+        self.assertEqual(pre("mcp__t3-code__html_render", {})["permissionDecision"], "allow")
+        self.assertEqual(pre("Skill", {"skill": "agent-desktop"})["permissionDecision"], "allow")
 
     def test_claude_run_alone_is_allowed(self):
         self.assertEqual(bash("~/.local/bin/claude-run --cwd /x 'git add -A && git commit -q -F /tmp/m.txt'"), "allow")
         self.assertEqual(bash("/Users/jrw_37/.local/bin/claude-run --cwd /x './scripts/build-app.sh > /tmp/b.log 2>&1'"), "allow")
         self.assertEqual(bash("grep -n claude-run notes.md"), "allow")
         self.assertEqual(bash("cd /x && python3 - <<'EOF'\nif 'claude-run' in line:\n    claude-chrome = 1\nEOF"), "allow")
+        self.assertEqual(bash("~/.local/bin/claude-run --cwd /tmp 'open -g -a \"Google Chrome\" https://example.com'"),
+                         "allow")
 
     def test_claude_run_bad_shapes_are_denied(self):
         self.assertEqual(bash("printf x > /tmp/m.txt; ~/.local/bin/claude-run --cwd /x 'git commit -F /tmp/m.txt'"), "deny")
@@ -88,6 +102,8 @@ class PseudoAuto(unittest.TestCase):
         self.assertEqual(pre("Edit", {"file_path": memory + "note.md", "old_string": "a",
                                       "new_string": "T3 Code の設定"})["permissionDecision"], "deny")
         self.assertEqual(pre("Write", {"file_path": memory + "note.md", "content": "sandbox の外で実行する"})
+                         ["permissionDecision"], "deny")
+        self.assertEqual(pre("Write", {"file_path": memory + "note.md", "content": "agent-desktop で Box を開く"})
                          ["permissionDecision"], "deny")
         self.assertEqual(pre("Write", {"file_path": memory + "note.md", "content": "Notion の仕様書はここ"})
                          ["permissionDecision"], "allow")
