@@ -1,0 +1,65 @@
+{
+  "language": "Japanese",
+  "attribution": {
+    "commit": "",
+    "pr": "",
+    "sessionUrl": false
+  },
+  "model": "opus",
+  "modelSettings": {
+    "claude-opus-5-5": {
+      "effortLevel": "xhigh"
+    }
+  },
+  "sandbox": {
+    "excludedCommands": [
+      "*"
+    ],
+    "network": {
+      "allowUnixSockets": [
+        "/tmp/claude-501/claude-chrome/chrome-devtools-mcp"
+      ]
+    },
+    "filesystem": {
+      "allowWrite": [
+        "/Users/jrw_37/.local/share/claude-chrome/profile"
+      ]
+    }
+  },
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 ~/.claude/hooks/pseudo-auto.py",
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 ~/.claude/hooks/long-thread.py",
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 ~/.claude/hooks/stop-japanese.py",
+            "timeout": 10
+          }
+        ]
+      }
+    ]
+  }
+}
