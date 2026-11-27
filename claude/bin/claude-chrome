@@ -1,9 +1,0 @@
-#!/bin/sh
-set -eu
-umask 077
-export XDG_RUNTIME_DIR=/tmp/claude-501/claude-chrome
-export PLUGIN_DATA=/Users/jrw_37/.local/share/claude-chrome
-export CHROME_DEVTOOLS_MCP_NO_UPDATE_CHECKS=1
-export CHROME_DEVTOOLS_MCP_NO_USAGE_STATISTICS=1
-mkdir -p "$XDG_RUNTIME_DIR"
-exec /Users/jrw_37/.nix-profile/bin/node /Users/jrw_37/.local/share/claude-chrome/node_modules/chrome-devtools-mcp/out/Default/gen/src/bin/chrome-devtools.js "$@"
