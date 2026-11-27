@@ -55,6 +55,3 @@ fi
 for file in ${CONFIGFIELS[@]}; do
     ln -s $SCRIPT_DIR/$file $HOME/.$file
 done
-
-# Claude Code の設定（~/.claude と ~/.local/bin へのリンク、settings.json へのマージ）
-bash "$SCRIPT_DIR/claude/install.sh"
